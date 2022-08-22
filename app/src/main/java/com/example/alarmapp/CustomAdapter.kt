@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(
     private var context: Context?,
+    private var alarm_ids: ArrayList<Int>,
     private var alarm_names: ArrayList<String>,
     private var alarm_hours: ArrayList<Int>,
     private var alarm_minutes: ArrayList<Int>
@@ -25,7 +26,7 @@ class CustomAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if(alarm_names[position] == ""){
-            holder.alarmName.text = "Alarm"
+            holder.alarmName.text = "A" + alarm_ids[position]
         }else{
             holder.alarmName.text = alarm_names[position]
         }

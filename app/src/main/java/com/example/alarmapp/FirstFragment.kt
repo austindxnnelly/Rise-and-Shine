@@ -25,6 +25,7 @@ class FirstFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var alarm_ids = ArrayList<Int>()
     private var alarm_names = ArrayList<String>()
     private var alarm_hours = ArrayList<Int>()
     private var alarm_minutes = ArrayList<Int>()
@@ -52,7 +53,7 @@ class FirstFragment : Fragment() {
         //}
         storeDataInArrays()
         val recyclerView = binding.recyclerView
-        customAdapter = CustomAdapter(context, alarm_names, alarm_hours, alarm_minutes)
+        customAdapter = CustomAdapter(context, alarm_ids, alarm_names, alarm_hours, alarm_minutes)
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
     }
@@ -69,6 +70,7 @@ class FirstFragment : Fragment() {
         if(cursor?.count != 0){
             if (cursor != null) {
                 while(cursor.moveToNext()){
+                    alarm_ids.add(cursor.getInt(0))
                     alarm_names.add(cursor.getString(1))
                     alarm_hours.add(cursor.getInt(2))
                     alarm_minutes.add(cursor.getInt(3))
