@@ -69,9 +69,9 @@ class FirstFragment : Fragment() {
         if(cursor?.count != 0){
             if (cursor != null) {
                 while(cursor.moveToNext()){
-                    alarm_names.add(cursor.getString(0))
-                    alarm_hours.add(cursor.getInt(1))
-                    alarm_minutes.add(cursor.getInt(2))
+                    alarm_names.add(cursor.getString(1))
+                    alarm_hours.add(cursor.getInt(2))
+                    alarm_minutes.add(cursor.getInt(3))
                 }
             }
         }

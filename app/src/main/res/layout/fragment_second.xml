@@ -21,6 +21,16 @@
         android:textStyle="bold"
         app:drawableTopCompat="@drawable/ic_time" />
 
+    <EditText
+        android:id="@+id/add_alarm_name"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:hint="@string/alarm_name"
+        android:inputType="text"
+        android:importantForAutofill="no"
+        android:layout_marginTop="25dp"
+        android:maxLength="5"/>
+
     <Button
         android:id="@+id/button_second"
         android:layout_width="match_parent"

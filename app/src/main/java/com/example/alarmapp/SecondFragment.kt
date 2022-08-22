@@ -25,6 +25,8 @@ class SecondFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var hour: Int? = null
+    private var minute: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,6 +67,8 @@ class SecondFragment : Fragment() {
             val minuteString = if(minute < 10) "0$minute" else "$minute"
             val hourString = if(hour == 0) "12" else if(hour > 12) hour - 12 else "$hour"
             binding.setTime.hint = "$hourString:$minuteString $meridiemIndicator"
+            this.hour = hour
+            this.minute = minute
         }
     }
 
@@ -78,7 +82,18 @@ class SecondFragment : Fragment() {
             bundle.putString("key", time)
 
             val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
-            db.addAlarm("test", 5, 50)
+
+            if(hour == null){
+                val isSystem24Hour = is24HourFormat(requireContext())
+                val rightNow = Calendar.getInstance()
+                val currentHour = if(isSystem24Hour) rightNow.get(Calendar.HOUR_OF_DAY) else rightNow.get(Calendar.HOUR)
+                val currentMinute = rightNow.get(Calendar.MINUTE)
+                hour = currentHour
+                minute = currentMinute
+            }
+
+            val name: String = binding.addAlarmName.text.toString()
+            db.addAlarm(name, hour!!, minute!!)
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
