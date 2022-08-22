@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.sql.RowId
 
 class AlarmDatabase(
     context: Context?,
@@ -41,6 +42,11 @@ class AlarmDatabase(
         }
 
         return cursor
+    }
+
+    fun deleteOneRow(rowId: String){
+        val db = this.writableDatabase
+        db.delete("alarm_library", "_id=?", arrayOf(rowId))
     }
 
 }

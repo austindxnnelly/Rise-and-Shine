@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.alarmapp.databinding.FragmentFirstBinding
 
 /**
@@ -56,6 +58,7 @@ class FirstFragment : Fragment() {
         customAdapter = CustomAdapter(context, alarm_ids, alarm_names, alarm_hours, alarm_minutes)
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
+        swipeToDelete()
     }
 
 
@@ -64,7 +67,7 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 
-    fun storeDataInArrays(){
+    private fun storeDataInArrays(){
         val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
         val cursor = db.readAllData()
         if(cursor?.count != 0){
@@ -77,6 +80,29 @@ class FirstFragment : Fragment() {
                 }
             }
         }
+    }
 
+    private fun swipeToDelete(){
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT
+        ){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+                val id = alarm_ids.get(position)
+                db.deleteOneRow(id.toString())
+                customAdapter.notifyItemRemoved(position)
+            }
+
+        }).attachToRecyclerView(binding.recyclerView)
     }
 }
