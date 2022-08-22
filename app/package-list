@@ -4,6 +4,7 @@ $dokka.location:com.example.alarmapp////PointingToDeclaration/app/com.example.a
 $dokka.location:com.example.alarmapp/AlarmDatabase///PointingToDeclaration/app/com.example.alarmapp/-alarm-database/index.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/AlarmDatabase/#android.content.Context?#kotlin.String?#android.database.sqlite.SQLiteDatabase.CursorFactory?#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/-alarm-database.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/addAlarm/#kotlin.String?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/add-alarm.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/deleteOneRow/#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/delete-one-row.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/onCreate/#android.database.sqlite.SQLiteDatabase?/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-create.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/onUpgrade/#android.database.sqlite.SQLiteDatabase?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-upgrade.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/readAllData/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/read-all-data.html
@@ -21,7 +22,6 @@ $dokka.location:com.example.alarmapp/FirstFragment/FirstFragment/#/PointingToDec
 $dokka.location:com.example.alarmapp/FirstFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-create-view.html
 $dokka.location:com.example.alarmapp/FirstFragment/onDestroyView/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-destroy-view.html
 $dokka.location:com.example.alarmapp/FirstFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-view-created.html
-$dokka.location:com.example.alarmapp/FirstFragment/storeDataInArrays/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/store-data-in-arrays.html
 $dokka.location:com.example.alarmapp/MainActivity///PointingToDeclaration/app/com.example.alarmapp/-main-activity/index.html
 $dokka.location:com.example.alarmapp/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/-main-activity.html
 $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-create-options-menu.html
