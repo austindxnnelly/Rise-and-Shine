@@ -73,10 +73,9 @@ class SecondFragment : Fragment() {
 
         binding.buttonSecond.setOnClickListener {
             val time = binding.setTime.hint.toString()
-            val array = time.split(":", " ")
 
             val bundle = Bundle()
-            bundle.putString("key", "abc")
+            bundle.putString("key", time)
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
     }
