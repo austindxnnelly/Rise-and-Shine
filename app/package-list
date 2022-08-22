@@ -1,11 +1,26 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.example.alarmapp////PointingToDeclaration/app/com.example.alarmapp/index.html
+$dokka.location:com.example.alarmapp/AlarmDatabase///PointingToDeclaration/app/com.example.alarmapp/-alarm-database/index.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/AlarmDatabase/#android.content.Context?#kotlin.String?#android.database.sqlite.SQLiteDatabase.CursorFactory?#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/-alarm-database.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/addAlarm/#kotlin.String?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/add-alarm.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/onCreate/#android.database.sqlite.SQLiteDatabase?/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-create.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/onUpgrade/#android.database.sqlite.SQLiteDatabase?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-upgrade.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/readAllData/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/read-all-data.html
+$dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder///PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/index.html
+$dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/CustomAdapter.MyViewHolder/#android.view.View/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/-custom-adapter.-my-view-holder.html
+$dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/getAlarmName/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/get-alarm-name.html
+$dokka.location:com.example.alarmapp/CustomAdapter///PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/index.html
+$dokka.location:com.example.alarmapp/CustomAdapter/CustomAdapter/#android.content.Context?#java.util.ArrayList[kotlin.String]#java.util.ArrayList[kotlin.Int]#java.util.ArrayList[kotlin.Int]/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-custom-adapter.html
+$dokka.location:com.example.alarmapp/CustomAdapter/getItemCount/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/get-item-count.html
+$dokka.location:com.example.alarmapp/CustomAdapter/onBindViewHolder/#com.example.alarmapp.CustomAdapter.MyViewHolder#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/on-bind-view-holder.html
+$dokka.location:com.example.alarmapp/CustomAdapter/onCreateViewHolder/#android.view.ViewGroup#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/on-create-view-holder.html
 $dokka.location:com.example.alarmapp/FirstFragment///PointingToDeclaration/app/com.example.alarmapp/-first-fragment/index.html
 $dokka.location:com.example.alarmapp/FirstFragment/FirstFragment/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/-first-fragment.html
 $dokka.location:com.example.alarmapp/FirstFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-create-view.html
 $dokka.location:com.example.alarmapp/FirstFragment/onDestroyView/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-destroy-view.html
 $dokka.location:com.example.alarmapp/FirstFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-view-created.html
+$dokka.location:com.example.alarmapp/FirstFragment/storeDataInArrays/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/store-data-in-arrays.html
 $dokka.location:com.example.alarmapp/MainActivity///PointingToDeclaration/app/com.example.alarmapp/-main-activity/index.html
 $dokka.location:com.example.alarmapp/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/-main-activity.html
 $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-create-options-menu.html
