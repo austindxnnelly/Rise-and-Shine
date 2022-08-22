@@ -12,7 +12,7 @@ $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/CustomAdapter.My
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/getAlarmName/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/get-alarm-name.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/getAlarmTime/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/get-alarm-time.html
 $dokka.location:com.example.alarmapp/CustomAdapter///PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/index.html
-$dokka.location:com.example.alarmapp/CustomAdapter/CustomAdapter/#android.content.Context?#java.util.ArrayList[kotlin.String]#java.util.ArrayList[kotlin.Int]#java.util.ArrayList[kotlin.Int]/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-custom-adapter.html
+$dokka.location:com.example.alarmapp/CustomAdapter/CustomAdapter/#android.content.Context?#java.util.ArrayList[kotlin.Int]#java.util.ArrayList[kotlin.String]#java.util.ArrayList[kotlin.Int]#java.util.ArrayList[kotlin.Int]/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-custom-adapter.html
 $dokka.location:com.example.alarmapp/CustomAdapter/getItemCount/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/get-item-count.html
 $dokka.location:com.example.alarmapp/CustomAdapter/onBindViewHolder/#com.example.alarmapp.CustomAdapter.MyViewHolder#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/on-bind-view-holder.html
 $dokka.location:com.example.alarmapp/CustomAdapter/onCreateViewHolder/#android.view.ViewGroup#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/on-create-view-holder.html
