@@ -76,6 +76,10 @@ class SecondFragment : Fragment() {
 
             val bundle = Bundle()
             bundle.putString("key", time)
+
+            val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+            db.addAlarm("test", 5, 50)
+
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
     }
