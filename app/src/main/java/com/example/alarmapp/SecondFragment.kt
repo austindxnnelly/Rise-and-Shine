@@ -3,6 +3,7 @@ package com.example.alarmapp
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -74,8 +75,9 @@ class SecondFragment : Fragment() {
             val time = binding.setTime.hint.toString()
             val array = time.split(":", " ")
 
-
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            val bundle = Bundle()
+            bundle.putString("key", "abc")
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
     }
 
