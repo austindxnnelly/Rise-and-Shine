@@ -63,10 +63,17 @@ class SecondFragment : Fragment() {
             val hour = timePicker.hour
             //Range 0-59
             val minute = timePicker.minute
-            val meridiemIndicator = if(hour > 11) "PM" else "AM"
+
             val minuteString = if(minute < 10) "0$minute" else "$minute"
-            val hourString = if(hour == 0) "12" else if(hour > 12) hour - 12 else "$hour"
-            binding.setTime.hint = "$hourString:$minuteString $meridiemIndicator"
+            if(!isSystem24Hour){
+                val meridiemIndicator = if(hour > 11) "PM" else "AM"
+                val hourString = if(hour == 0) "12" else if(hour > 12) hour - 12 else "$hour"
+                binding.setTime.hint = "$hourString:$minuteString $meridiemIndicator"
+            }else{
+                val hourString = if(hour < 10) "0$hour" else "$hour"
+                binding.setTime.hint = "$hourString:$minuteString"
+            }
+
             this.hour = hour
             this.minute = minute
         }

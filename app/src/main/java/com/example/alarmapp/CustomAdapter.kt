@@ -2,6 +2,7 @@ package com.example.alarmapp
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,13 +32,21 @@ class CustomAdapter(
             holder.alarmName.text = alarm_names[position]
         }
 
+        val isSystem24Hour = DateFormat.is24HourFormat(context)
         val hour = alarm_hours[position]
         val minute = alarm_minutes[position]
-        val meridiemIndicator = if(hour > 11) "PM" else "AM"
         val minuteString = if(minute < 10) "0$minute" else "$minute"
-        val hourString = if(hour == 0) "12" else if(hour > 12) hour - 12 else "$hour"
-        val timeString = "$hourString:$minuteString $meridiemIndicator"
-        holder.alarmTime.text = timeString
+
+        if(!isSystem24Hour){
+            val meridiemIndicator = if(hour > 11) "PM" else "AM"
+            val hourString = if(hour == 0) "12" else if(hour > 12) hour - 12 else "$hour"
+            val timeString = "$hourString:$minuteString $meridiemIndicator"
+            holder.alarmTime.text = timeString
+        }else{
+            val hourString = if(hour < 10) "0$hour" else "$hour"
+            val timeString = "$hourString:$minuteString"
+            holder.alarmTime.text = timeString
+        }
     }
 
     override fun getItemCount(): Int {
