@@ -15,8 +15,10 @@
         android:layout_marginBottom="-10dp"
         app:layout_constraintBottom_toTopOf="@+id/add_alarm_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
 
     <Button
         android:id="@+id/add_alarm_button"
@@ -32,5 +34,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/plus_button" />
+
+    <ImageView
+        android:id="@+id/emptyAlarmIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_baseline_access_alarms_24"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView"
+        android:alpha="0.3"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/noAlarmTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.4"
+        android:text="@string/no_alarms"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/emptyAlarmIV"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

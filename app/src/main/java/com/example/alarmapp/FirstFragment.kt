@@ -79,6 +79,9 @@ class FirstFragment : Fragment() {
                     alarm_minutes.add(cursor.getInt(3))
                 }
             }
+        }else{
+            binding.emptyAlarmIV.visibility = View.VISIBLE
+            binding.noAlarmTV.visibility = View.VISIBLE
         }
     }
 
@@ -99,6 +102,7 @@ class FirstFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
                 val id = alarm_ids.get(position)
+                Log.d("Position", position.toString())
                 db.deleteOneRow(id.toString())
                 customAdapter.notifyItemRemoved(position)
             }
