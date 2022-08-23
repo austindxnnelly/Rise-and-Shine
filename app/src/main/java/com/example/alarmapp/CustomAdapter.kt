@@ -26,11 +26,12 @@ class CustomAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        if(alarm_names[position] == ""){
+        /*if(alarm_names[position] == ""){
             holder.alarmName.text = "A" + alarm_ids[position]
         }else{
             holder.alarmName.text = alarm_names[position]
-        }
+        }*/
+        holder.alarmName.text = ""
 
         val isSystem24Hour = DateFormat.is24HourFormat(context)
         val hour = alarm_hours[position]
