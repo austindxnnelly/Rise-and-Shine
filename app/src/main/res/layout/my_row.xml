@@ -18,7 +18,7 @@
 
 
             <TextView
-                android:id="@+id/alarm_name"
+                android:id="@+id/alarm_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/test"
@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/alarm_time"
+                android:id="@+id/alarm_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/test"
