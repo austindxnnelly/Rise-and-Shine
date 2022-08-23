@@ -98,6 +98,7 @@ class FirstFragment : Fragment() {
                 return true
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
