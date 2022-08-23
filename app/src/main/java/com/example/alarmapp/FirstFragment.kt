@@ -103,8 +103,11 @@ class FirstFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
                 val id = alarm_ids.get(position)
-                Log.d("Position", position.toString())
                 db.deleteOneRow(id.toString())
+                alarm_ids.removeAt(position)
+                alarm_names.removeAt(position)
+                alarm_hours.removeAt(position)
+                alarm_minutes.removeAt(position)
                 customAdapter.notifyItemRemoved(position)
             }
 
