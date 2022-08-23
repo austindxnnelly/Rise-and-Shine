@@ -53,7 +53,10 @@ class FirstFragment : Fragment() {
         //if(inputData != null){
             //binding.test.text = inputData.toString()
         //}
-        storeDataInArrays()
+        if(alarm_ids.size == 0){
+            storeDataInArrays()
+        }
+
         val recyclerView = binding.recyclerView
         customAdapter = CustomAdapter(context, alarm_ids, alarm_names, alarm_hours, alarm_minutes)
         recyclerView.adapter = customAdapter
