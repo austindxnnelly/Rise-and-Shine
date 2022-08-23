@@ -112,6 +112,10 @@ class FirstFragment : Fragment() {
                 alarm_hours.removeAt(position)
                 alarm_minutes.removeAt(position)
                 customAdapter.notifyItemRemoved(position)
+                if (alarm_names.size == 0){
+                    binding.emptyAlarmIV.visibility = View.VISIBLE
+                    binding.noAlarmTV.visibility = View.VISIBLE
+                }
             }
 
         }).attachToRecyclerView(binding.recyclerView)
