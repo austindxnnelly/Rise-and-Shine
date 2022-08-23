@@ -84,9 +84,8 @@ class SecondFragment : Fragment() {
             val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
 
             if(hour == null){
-                val isSystem24Hour = is24HourFormat(requireContext())
                 val rightNow = Calendar.getInstance()
-                val currentHour = if(isSystem24Hour) rightNow.get(Calendar.HOUR_OF_DAY) else rightNow.get(Calendar.HOUR)
+                val currentHour = rightNow.get(Calendar.HOUR_OF_DAY)
                 val currentMinute = rightNow.get(Calendar.MINUTE)
                 hour = currentHour
                 minute = currentMinute
