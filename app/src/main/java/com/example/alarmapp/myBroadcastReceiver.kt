@@ -15,15 +15,15 @@ import androidx.core.app.NotificationManagerCompat
 class myBroadcastReceiver : BroadcastReceiver(){
     override fun onReceive(context: Context, intent: Intent) {
         //what happens when alarm is triggered
-        //opening AlarmPlay
+        //opening AlarmActivity
         val i = Intent(context, AlarmActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent = PendingIntent.getActivity(context, 0, i, FLAG_MUTABLE)
 
         val builder = NotificationCompat.Builder(context, "alarmApp")
             .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle("Alarm App Alarm Manager")
-            .setContentText("Alarm is ringing")
+            .setContentTitle("Alarm App") //change to R.appTitle (or similar)
+            .setContentText("Alarm is ringing") //change to unique name for each alarm
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
