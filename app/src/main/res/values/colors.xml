@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="deleteColor">#D51102</color>
     <color name="labelColor">#FFFFFF</color>
+    <color name="lime">#4BF702</color>
 </resources>
