@@ -15,6 +15,10 @@ tasks.withType(Test) {
     jacoco.excludes = ['jdk.internal.*']
 }
 
+pluginsMapConfiguration.set(
+        ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
+)
+
 task jacocoCombinedTestReports(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
     group = "Verification"
     description = "Creates JaCoCo test coverage report for Unit and Instrumented Tests (combined) on the Debug build"
