@@ -56,7 +56,7 @@ class SecondFragment : Fragment() {
         val isSystem24Hour = is24HourFormat(requireContext())
         val clockFormat =  if(isSystem24Hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
         val rightNow = Calendar.getInstance()
-        val currentHour = if(isSystem24Hour) rightNow.get(Calendar.HOUR_OF_DAY) else rightNow.get(Calendar.HOUR)
+        val currentHour = rightNow.get(Calendar.HOUR_OF_DAY)
         val currentMinute = rightNow.get(Calendar.MINUTE)
 
         val timePicker = MaterialTimePicker.Builder()
