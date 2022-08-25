@@ -1,6 +1,7 @@
 package com.example.alarmapp
 
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -17,7 +18,7 @@ class myBroadcastReceiver : BroadcastReceiver(){
         //opening AlarmPlay
         val i = Intent(context, AlarmActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        val pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
+        val pendingIntent = PendingIntent.getActivity(context, 0, i, FLAG_MUTABLE)
 
         val builder = NotificationCompat.Builder(context, "alarmApp")
             .setSmallIcon(R.drawable.ic_launcher_background)
