@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                 calendar.timeInMillis,
                 alarmIntent
             )
-            Toast.makeText(this, "Alarm set Successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Alarm set successfully", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         alarmMgr = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, myBroadcastReceiver::class.java)
 
-        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, FLAG_MUTABLE)
         alarmMgr.cancel(alarmIntent)
 
         Toast.makeText(this, "Alarm Cancelled", Toast.LENGTH_LONG).show()
