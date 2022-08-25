@@ -17,7 +17,7 @@ class Alarm (
     private val name : String,
     private val hour: Int,
     private val minute: Int,
-    private val day : Int,
+    //private val day : Int,
     ){
 
     private lateinit var alarmMgr: AlarmManager
@@ -34,8 +34,6 @@ class Alarm (
                 set(Calendar.HOUR_OF_DAY, hour)
                 set(Calendar.MINUTE, minute)
             }
-        } else {
-            TODO("VERSION.SDK_INT < N")
         }
     }
     /**
@@ -53,30 +51,6 @@ class Alarm (
                 alarmIntent
             )
             Toast.makeText(this, "Alarm set Successfully", Toast.LENGTH_SHORT).show()
-
-/*
-            //S = 31
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                if (alarmMgr?.canScheduleExactAlarms() == true) {
-                    alarmMgr?.setExact(
-                        AlarmManager.RTC_WAKEUP,
-                        calendar.timeInMillis,
-                        alarmIntent
-                    )
-                } else {
-                    alarmMgr?.set(
-                        AlarmManager.RTC_WAKEUP,
-                        calendar.timeInMillis,
-                        alarmIntent
-                    )
-                }
-            } else {
-                alarmMgr?.set(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.timeInMillis,
-                    alarmIntent
-                )
-            }*/
             timeInMillis = calendar.timeInMillis
         }
     }
@@ -89,20 +63,5 @@ class Alarm (
         alarmMgr.cancel(alarmIntent)
 
         Toast.makeText(this, "Alarm Cancelled", Toast.LENGTH_LONG).show()
-    }
-
-    fun createMessage() : String{
-        val info = AlarmManager.AlarmClockInfo(timeInMillis!!, alarmIntent)
-        val trigTime = info.triggerTime
-        val showInt = info.showIntent
-
-        val message = "Alarm created successfully at: $trigTime, with info: $showInt"
-        return message
-        /*val mySnackBar = Snackbar.make(
-            findViewById(R.id.recyclerView),
-            message,
-            Snackbar.LENGTH_LONG
-        )
-        mySnackBar.show()*/
     }
 }

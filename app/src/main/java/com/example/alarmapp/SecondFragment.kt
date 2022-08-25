@@ -1,6 +1,11 @@
 package com.example.alarmapp
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Context.ALARM_SERVICE
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
@@ -10,6 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.alarmapp.databinding.FragmentSecondBinding
 import com.google.android.material.snackbar.Snackbar
@@ -100,14 +107,6 @@ class SecondFragment : Fragment() {
             //new
             val alarm = Alarm(name!!, hour!!, minute!!)
             alarm.setAlarm()
-//            val message = alarm.createMessage()
-            /*val message = "Alarm $name created! At $hour:$minute"
-            val mySnackBar = Snackbar.make(
-                requireActivity().findViewById(R.id.recyclerView),
-                message,
-                Snackbar.LENGTH_LONG
-            )
-            mySnackBar.show()*/
             //new end
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)

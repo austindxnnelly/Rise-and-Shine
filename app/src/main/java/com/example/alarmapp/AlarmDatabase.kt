@@ -28,7 +28,6 @@ class AlarmDatabase(
         onCreate(p0)
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     fun addAlarm(name: String?, hour: Int, minute: Int){
         val db = this.writableDatabase
         val contentValues = ContentValues()
