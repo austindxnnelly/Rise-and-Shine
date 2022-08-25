@@ -4,6 +4,8 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.Intent
 import android.icu.text.Normalizer.NO
@@ -22,6 +24,7 @@ import com.example.alarmapp.databinding.ActivityMainBinding
 import java.util.*
 import android.icu.util.Calendar
 import android.icu.util.Calendar.*
+import android.util.Log
 
 
 class MainActivity : AppCompatActivity() {
@@ -82,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, myBroadcastReceiver::class.java)
 
-            alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+            alarmIntent = PendingIntent.getBroadcast(this, 0, intent, FLAG_MUTABLE)
             alarmMgr.setExact(
                 AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,
