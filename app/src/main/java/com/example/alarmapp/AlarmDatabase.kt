@@ -17,10 +17,6 @@ class AlarmDatabase(
     factory: SQLiteDatabase.CursorFactory?,
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
-    
-    // alarm managers
-    private var alarmMgr: AlarmManager? = null
-    private lateinit var alarmIntent: PendingIntent
 
     override fun onCreate(p0: SQLiteDatabase?) {
         val query = "CREATE TABLE alarm_library (_id INTEGER PRIMARY KEY AUTOINCREMENT , alarm_name TEXT, alarm_hour INTEGER, alarm_minute INTEGER);"
@@ -34,9 +30,6 @@ class AlarmDatabase(
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun addAlarm(name: String?, hour: Int, minute: Int){
-        val snooze = false
-        val snoozeTime = 0.toLong() //in minutes
-        val cancel = false
         val db = this.writableDatabase
         val contentValues = ContentValues()
 
@@ -44,27 +37,6 @@ class AlarmDatabase(
         contentValues.put("alarm_hour", hour)
         contentValues.put("alarm_minute", minute)
         db.insert("alarm_library", null, contentValues)
-
-        // Set the alarm to start at given minute and time.
-        val calendar: Calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
-        }
-        // if snoozing is allowed -- not implemented yet
-        if (snooze){
-            alarmMgr?.setRepeating(
-                AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
-                1000 * 60 * snoozeTime,
-                alarmIntent
-            )
-        }
-        // to cancel the alarm -- not implemented yet
-        if(cancel){
-            alarmMgr?.cancel(alarmIntent)
-        }
-
     }
 
     fun readAllData(): Cursor? {

@@ -1,5 +1,9 @@
 package com.example.alarmapp
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.icu.text.Normalizer.NO
+import android.os.Build
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +31,26 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        createNotificationChannel()
+    }
+
+    /**
+     * Function to create notification channel
+     * which allows alarms to sound
+     */
+    private fun createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name : CharSequence = "alarmRingingChannel"
+            val description = "Channel for Alarm Manager"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("alarmApp",name,importance)
+            channel.description = description
+            val notificationManager = getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
