@@ -2,8 +2,11 @@ package com.example.alarmapp
 
 import android.annotation.SuppressLint
 import android.database.Cursor
+import android.graphics.Canvas
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.TextureView
@@ -11,11 +14,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alarmapp.databinding.FragmentFirstBinding
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -116,6 +121,51 @@ class FirstFragment : Fragment() {
                     binding.emptyAlarmIV.visibility = View.VISIBLE
                     binding.noAlarmTV.visibility = View.VISIBLE
                 }
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val deleteColor = context?.let { ContextCompat.getColor(it, R.color.deleteColor) }
+                val labelColor = context?.let { ContextCompat.getColor(it, R.color.labelColor) }
+                val deleteIcon = R.drawable.ic_baseline_delete_24
+                if (deleteColor != null) {
+                    if (labelColor != null) {
+                        RecyclerViewSwipeDecorator.Builder(
+                            c,
+                            recyclerView,
+                            viewHolder,
+                            dX,
+                            dY,
+                            actionState,
+                            isCurrentlyActive
+                        )
+                            .addSwipeLeftBackgroundColor(deleteColor)
+                            .addSwipeLeftActionIcon(deleteIcon)
+                            .addSwipeLeftLabel("Delete")
+                            .setSwipeLeftLabelColor(labelColor)
+                            .setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
+                            .setSwipeLeftLabelTypeface(Typeface.DEFAULT_BOLD)
+                            .create()
+                            .decorate()
+                    }
+                }
+
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
             }
 
         }).attachToRecyclerView(binding.recyclerView)
