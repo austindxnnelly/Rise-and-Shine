@@ -1,6 +1,8 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.example.alarmapp////PointingToDeclaration/app/com.example.alarmapp/index.html
+$dokka.location:com.example.alarmapp/AlarmActivity///PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/index.html
+$dokka.location:com.example.alarmapp/AlarmActivity/AlarmActivity/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/-alarm-activity.html
 $dokka.location:com.example.alarmapp/AlarmDatabase///PointingToDeclaration/app/com.example.alarmapp/-alarm-database/index.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/AlarmDatabase/#android.content.Context?#kotlin.String?#android.database.sqlite.SQLiteDatabase.CursorFactory?#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/-alarm-database.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/addAlarm/#kotlin.String?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/add-alarm.html
@@ -24,13 +26,18 @@ $dokka.location:com.example.alarmapp/FirstFragment/onDestroyView/#/PointingToDec
 $dokka.location:com.example.alarmapp/FirstFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-view-created.html
 $dokka.location:com.example.alarmapp/MainActivity///PointingToDeclaration/app/com.example.alarmapp/-main-activity/index.html
 $dokka.location:com.example.alarmapp/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/-main-activity.html
+$dokka.location:com.example.alarmapp/MainActivity/cancelAlarm/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/cancel-alarm.html
 $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-create-options-menu.html
 $dokka.location:com.example.alarmapp/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-options-item-selected.html
 $dokka.location:com.example.alarmapp/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-support-navigate-up.html
+$dokka.location:com.example.alarmapp/MainActivity/setAlarm/#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-main-activity/set-alarm.html
 $dokka.location:com.example.alarmapp/SecondFragment///PointingToDeclaration/app/com.example.alarmapp/-second-fragment/index.html
 $dokka.location:com.example.alarmapp/SecondFragment/SecondFragment/#/PointingToDeclaration/app/com.example.alarmapp/-second-fragment/-second-fragment.html
 $dokka.location:com.example.alarmapp/SecondFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-second-fragment/on-create-view.html
 $dokka.location:com.example.alarmapp/SecondFragment/onDestroyView/#/PointingToDeclaration/app/com.example.alarmapp/-second-fragment/on-destroy-view.html
 $dokka.location:com.example.alarmapp/SecondFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-second-fragment/on-view-created.html
+$dokka.location:com.example.alarmapp/myBroadcastReceiver///PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/index.html
+$dokka.location:com.example.alarmapp/myBroadcastReceiver/myBroadcastReceiver/#/PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/my-broadcast-receiver.html
+$dokka.location:com.example.alarmapp/myBroadcastReceiver/onReceive/#android.content.Context#android.content.Intent/PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/on-receive.html
 com.example.alarmapp
 
