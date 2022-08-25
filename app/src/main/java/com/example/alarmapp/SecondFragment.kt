@@ -1,6 +1,12 @@
 package com.example.alarmapp
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Context.ALARM_SERVICE
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
 import android.util.Log
@@ -9,8 +15,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.alarmapp.databinding.FragmentSecondBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.util.*
@@ -99,7 +108,16 @@ class SecondFragment : Fragment() {
             }
 
             val name: String = binding.addAlarmName.text.toString()
-            db.addAlarm(name, hour!!, minute!!)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                db.addAlarm(name, hour!!, minute!!)
+            }
+
+
+            (activity as MainActivity).setAlarm(hour!!, minute!!)
+            /*//new
+            val alarm = Alarm(name!!, hour!!, minute!!)
+            alarm.setAlarm()
+            //new end*/
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }

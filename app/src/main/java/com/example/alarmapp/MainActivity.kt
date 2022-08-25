@@ -1,7 +1,14 @@
 package com.example.alarmapp
 
+import android.app.AlarmManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.icu.text.Normalizer.NO
+import android.os.Build
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,12 +16,21 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.alarmapp.databinding.ActivityMainBinding
+import java.util.*
+import android.icu.util.Calendar
+import android.icu.util.Calendar.*
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var alarmMgr: AlarmManager
+    private lateinit var alarmIntent: PendingIntent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +43,67 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        createNotificationChannel()
+    }
+
+    /**
+     * Function to create notification channel
+     * which allows alarms to sound
+     */
+    private fun createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name : CharSequence = "alarmRingingChannel"
+            val description = "Channel for Alarm Manager"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("alarmApp",name,importance)
+            channel.description = description
+            val notificationManager = getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    /**
+     * Function to set alarm
+     * displays a short message
+     * @param hour the hour when alarm should go off
+     * @param minute the minute when alarm should go off
+     */
+    fun setAlarm(hour : Int, minute: Int){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val calendar = Calendar.getInstance().apply {
+                timeInMillis = System.currentTimeMillis()
+                set(HOUR_OF_DAY, hour)
+                set(MINUTE, minute)
+            }
+
+            alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
+            val intent = Intent(this, myBroadcastReceiver::class.java)
+
+            alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+            alarmMgr.setExact(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                alarmIntent
+            )
+            Toast.makeText(this, "Alarm set Successfully", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * Function to cancel the alarm
+     * displays a short message
+     */
+    fun cancelAlarm(){
+        alarmMgr = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, myBroadcastReceiver::class.java)
+
+        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        alarmMgr.cancel(alarmIntent)
+
+        Toast.makeText(this, "Alarm Cancelled", Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
