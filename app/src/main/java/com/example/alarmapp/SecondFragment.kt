@@ -104,10 +104,13 @@ class SecondFragment : Fragment() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 db.addAlarm(name, hour!!, minute!!)
             }
-            //new
+
+
+            (activity as MainActivity).setAlarm(hour!!, minute!!)
+            /*//new
             val alarm = Alarm(name!!, hour!!, minute!!)
             alarm.setAlarm()
-            //new end
+            //new end*/
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }

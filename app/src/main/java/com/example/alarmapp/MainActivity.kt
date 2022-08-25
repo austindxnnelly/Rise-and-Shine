@@ -20,6 +20,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.alarmapp.databinding.ActivityMainBinding
 import java.util.*
+import android.icu.util.Calendar
+import android.icu.util.Calendar.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var alarmMgr: AlarmManager
     private lateinit var alarmIntent: PendingIntent
-    private lateinit var calendar : Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,15 +68,22 @@ class MainActivity : AppCompatActivity() {
     /**
      * Function to set alarm
      * displays a short message
-     * @param time the time when alarm should go off from calendar.timeInMillis
+     * @param hour the hour when alarm should go off
+     * @param minute the minute when alarm should go off
      */
-    fun setAlarm(time : Long){
+    fun setAlarm(hour : Int, minute: Int){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val calendar = Calendar.getInstance().apply {
+                timeInMillis = System.currentTimeMillis()
+                set(HOUR_OF_DAY, hour)
+                set(MINUTE, minute)
+            }
+
             alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, myBroadcastReceiver::class.java)
 
             alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-            alarmMgr!!.setExact(
+            alarmMgr.setExact(
                 AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,
                 alarmIntent
