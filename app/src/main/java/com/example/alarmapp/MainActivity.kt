@@ -109,7 +109,8 @@ class MainActivity : AppCompatActivity() {
                     alarmIntent
                 )
             }
-            Toast.makeText(this, "Alarm $id set successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Alarm $id set successfully"
+                , Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -130,7 +131,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * @return
+     * Initialize the contents of the Activity's standard options menu.
+     * @param menu, The options menu in which the items are placed
+     * @return true for the menu to be displayed
      */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -139,7 +142,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * @return
+     * Called whenever an item in the options menu is selected
+     * @param item, The menu item that was selected.
+     * @return Return false to allow normal menu processing to proceed, true to consume it here.
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
@@ -151,6 +156,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This method is called whenever the user chooses to navigate Up
+     * within application's activity hierarchy from the action bar.
+     */
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)

@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.properties.Delegates
 
 /**
- * Acts as a foundation for the alarm database.
- * Everytime you click confirm on an alarm, it adds that alarm to the database.
+ * Custom adapter for the alarm database. The adapter acts as a bridge between the
+ * database and UI. It converts data from the database to a UI component.
  *
  * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
  */
@@ -28,13 +28,14 @@ class CustomAdapter(
     private var alarm_hours: ArrayList<Int>,
     private var alarm_minutes: ArrayList<Int>
 ) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+
     private lateinit var parent: ViewGroup
     private var switch_state = true
 
     /**
-    * Unsure here
-    * @param
-    * @param
+    * Creates a new view holder when there is no existing view holders
+    * @param parent, The recyclerView group
+    * @param viewType, Set of views
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -46,8 +47,8 @@ class CustomAdapter(
     /**
     * Sets the correct time of the alarm.
     * Uses 24 hour format in order to do so.
-    * @param
-    * @param
+    * @param holder, item view and metadata about its place within the RecyclerView
+    * @param position, The position of the item within the adapter's data set.
      */
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -83,7 +84,8 @@ class CustomAdapter(
             val alarm_min = alarm_minutes.get(position)
             val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, switch_state)
 
-            parent.findFragment<FirstFragment>().fragmentManager?.let { it1 -> dialog.show(it1, "test") }
+            parent.findFragment<FirstFragment>()
+                .fragmentManager?.let { it1 -> dialog.show(it1, "test") }
             true
         }
     }
@@ -96,9 +98,14 @@ class CustomAdapter(
         return alarm_names.size
     }
 
+    /**
+     * MyViewHolder is a custom class which describes an item view and metadata
+     * about its place within the RecyclerView
+     */
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val alarmName: TextView = itemView.findViewById(R.id.alarm_name)
         val alarmTime: TextView = itemView.findViewById(R.id.alarm_time)
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
         val switch: Switch = itemView.findViewById(R.id.alarm_switch)
     }
 

@@ -42,7 +42,12 @@ class FirstFragment : Fragment() {
     private lateinit var customAdapter : CustomAdapter
 
     /**
-     * @return
+     * Called when View is created. The view will later be terminated .
+     * @param inflater, converts XML to a View
+     * @param container, parent view that the Fragment's UI should be attached to.
+     * @param savedInstanceState, reconstructed by previous state
+     *
+     * @return The View for the Fragment's UI, or null.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,9 +59,9 @@ class FirstFragment : Fragment() {
     }
 
     /**
-    * unsure here...
-    * @param
-    * @param
+    * Called immediately after onCreateView.
+    * @param view, The View returned by onCreateView
+    * @param savedInstanceState, re-constructed from a previous saved state
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,8 +86,7 @@ class FirstFragment : Fragment() {
 
 
     /**
-    * function shows the new view of the app after an alarm
-    * has been removed.
+     * Function that is called when View needs to be destroyed
      */
     override fun onDestroyView() {
         super.onDestroyView()
@@ -120,6 +124,9 @@ class FirstFragment : Fragment() {
             0,
             ItemTouchHelper.LEFT
         ){
+            /**
+             * Called on move.
+             */
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -128,6 +135,9 @@ class FirstFragment : Fragment() {
                 return true
             }
 
+            /**
+             * Function called when swiping
+             */
             @SuppressLint("NotifyDataSetChanged")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
@@ -148,6 +158,9 @@ class FirstFragment : Fragment() {
                 }
             }
 
+            /**
+             * Drawing child
+             */
             override fun onChildDraw(
                 c: Canvas,
                 recyclerView: RecyclerView,
