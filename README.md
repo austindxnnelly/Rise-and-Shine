@@ -1,6 +1,6 @@
 # COSC345
 
-## *APP NAME*
+## *Rise&Shine*
 Software Engineering Project 2022
 Liam Iggo, Shay Stevens, Dougal Colquhoun, Austin Donnelly
 
