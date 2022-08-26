@@ -13,6 +13,10 @@ import androidx.core.app.NotificationManagerCompat
  * Class which is invoked when phone is rebooted
  */
 class myBroadcastReceiver : BroadcastReceiver(){
+    /* this is called when an alarm is triggered, and opens AlarmActivity
+    @param context
+    @param intent
+     */
     override fun onReceive(context: Context, intent: Intent) {
         //what happens when alarm is triggered
         //opening AlarmActivity

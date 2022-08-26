@@ -9,6 +9,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * Acts as a foundation for the alarm database.
+ * Everytime you click confirm on an alarm, it adds that alarm to the database.
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
+ */
 class CustomAdapter(
     private var context: Context?,
     private var alarm_ids: ArrayList<Int>,
@@ -18,12 +24,23 @@ class CustomAdapter(
 ) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
 
 
+    /*
+    Unsure here
+    @param
+    @param
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.my_row, parent, false)
         return MyViewHolder(view)
     }
 
+    /*
+    Sets the correct time of the alarm.
+    Uses 24 hour format in order to do so.
+    @param
+    @param
+     */
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         /*if(alarm_names[position] == ""){
@@ -50,6 +67,10 @@ class CustomAdapter(
         }
     }
 
+    /*
+    Gets the count of the items in the database
+    @return alarm names.size, the amount of alarms in a users app.
+     */
     override fun getItemCount(): Int {
         return alarm_names.size
     }
