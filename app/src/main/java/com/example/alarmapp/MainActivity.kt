@@ -26,7 +26,14 @@ import android.icu.util.Calendar
 import android.icu.util.Calendar.*
 import android.util.Log
 
-
+/**
+ * Main class, used for our notification channel, allowing
+ * the OS to recognise when an alarm pops, and give the
+ * user a notification, as well as acting as the main base
+ * for all of our controls. Where you add an alarm etc
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -109,12 +116,18 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Alarm Cancelled", Toast.LENGTH_LONG).show()
     }
 
+    /**
+     * @return
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
+    /**
+     * @return
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
