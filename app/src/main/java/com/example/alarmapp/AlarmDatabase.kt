@@ -11,6 +11,13 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.sql.RowId
 
+/** Class to act as a point of reference between our code and the database
+ *
+ * This class will allow for new alarms to be stored in a table, existing
+ * alarms to be updated and existing alarms to be removed from a table.
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly.
+ */
 class AlarmDatabase(
     context: Context?,
     name: String?,
@@ -18,16 +25,31 @@ class AlarmDatabase(
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
 
+    /**
+    * creates a table in the database for a new alarm
+    * @param p0, the database for storing new set alarms
+     */
     override fun onCreate(p0: SQLiteDatabase?) {
         val query = "CREATE TABLE alarm_library (_id INTEGER PRIMARY KEY AUTOINCREMENT , alarm_name TEXT, alarm_hour INTEGER, alarm_minute INTEGER);"
         p0?.execSQL(query)
     }
 
+    /**
+    * updates an existing table entry in the database for a pre existing alarm
+    * @param p0, the database for storing new set alarms
+    * @param p1, p2, the alarms to be dropped and recreated when they are updated.
+     */
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         p0?.execSQL("DROP TABLE IF EXISTS alarm_library")
         onCreate(p0)
     }
 
+    /**
+    * adds an alarm to a table
+    * @param name, the name of the alarm
+    * @param hour, the time in hours that the alarm will be set for
+    * @param minute, the time in minutes that the alarm will be set for
+     */
     fun addAlarm(name: String?, hour: Int, minute: Int){
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -38,6 +60,9 @@ class AlarmDatabase(
         db.insert("alarm_library", null, contentValues)
     }
 
+    /**
+    * reads all of the alarms in the table
+     */
     fun readAllData(): Cursor? {
         val query = "SELECT * FROM alarm_library"
         val db = this.readableDatabase
@@ -50,6 +75,10 @@ class AlarmDatabase(
         return cursor
     }
 
+    /**
+    * deletes a row out of the table, which correlates to deleting a single alarm
+    * @param rowId, the unique identifier of the row that is being removed.
+     */
     fun deleteOneRow(rowId: String){
         val db = this.writableDatabase
         db.delete("alarm_library", "_id=?", arrayOf(rowId))

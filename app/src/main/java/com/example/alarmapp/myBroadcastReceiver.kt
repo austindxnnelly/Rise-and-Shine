@@ -13,6 +13,10 @@ import androidx.core.app.NotificationManagerCompat
  * Class which is invoked when phone is rebooted
  */
 class myBroadcastReceiver : BroadcastReceiver(){
+    /* this is called when an alarm is triggered, and opens AlarmActivity
+    @param context
+    @param intent
+     */
     override fun onReceive(context: Context, intent: Intent) {
         //what happens when alarm is triggered
         //opening AlarmActivity
@@ -22,8 +26,8 @@ class myBroadcastReceiver : BroadcastReceiver(){
 
         val builder = NotificationCompat.Builder(context, "alarmApp")
             .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle("Alarm App") //change to R.appTitle (or similar)
-            .setContentText("Alarm is ringing") //change to unique name for each alarm
+            //.setContentTitle(R.string.app_name.toString())
+            .setContentText("ALARM IS RINGING") //change to unique name for each alarm
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

@@ -24,6 +24,9 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
+ * This screen is when you open the app, and your alarms are listed.
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
  */
 class FirstFragment : Fragment() {
 
@@ -38,6 +41,9 @@ class FirstFragment : Fragment() {
     private var alarm_minutes = ArrayList<Int>()
     private lateinit var customAdapter : CustomAdapter
 
+    /**
+     * @return
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +53,11 @@ class FirstFragment : Fragment() {
 
     }
 
-
+    /**
+    * unsure here...
+    * @param
+    * @param
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addAlarmButton.setOnClickListener {
@@ -70,11 +80,19 @@ class FirstFragment : Fragment() {
     }
 
 
+    /**
+    * function shows the new view of the app after an alarm
+    * has been removed.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+    * function which stores the data (being the alarms) in an array
+    * for view to a user
+     */
     private fun storeDataInArrays(){
         val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
         val cursor = db.readAllData()
@@ -93,6 +111,10 @@ class FirstFragment : Fragment() {
         }
     }
 
+    /**
+    * Function that allows alarms to be removed from the app
+    * by swiping them to the side.
+     */
     private fun swipeToDelete(){
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             0,
@@ -112,6 +134,9 @@ class FirstFragment : Fragment() {
                 val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
                 val id = alarm_ids.get(position)
                 db.deleteOneRow(id.toString())
+                //cancelling alarm
+                (activity as MainActivity).cancelAlarm(id)
+
                 alarm_ids.removeAt(position)
                 alarm_names.removeAt(position)
                 alarm_hours.removeAt(position)
