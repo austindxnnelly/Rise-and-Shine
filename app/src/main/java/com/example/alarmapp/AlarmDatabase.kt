@@ -62,7 +62,6 @@ class AlarmDatabase(
 
     /**
     * reads all of the alarms in the table
-    * @param cursor ??
      */
     fun readAllData(): Cursor? {
         val query = "SELECT * FROM alarm_library"
