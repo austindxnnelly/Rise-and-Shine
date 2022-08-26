@@ -41,8 +41,8 @@ class SecondFragment : Fragment() {
     private var minute: Int? = null
 
     /**
-    The screen that initially pops up when you click the + button
-    @return the root of binding.
+    * The screen that initially pops up when you click the + button
+    * @return the root of binding.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +59,7 @@ class SecondFragment : Fragment() {
     }
 
     /**
-    The screen that pops up when you go to select your preferred alarm time.
+    * The screen that pops up when you go to select your preferred alarm time.
      */
     private fun openTimePicker(){
         //True if in military time, false if using 12 hours
@@ -99,7 +99,7 @@ class SecondFragment : Fragment() {
     }
 
     /**
-    Unsure here ...
+    * Unsure here ...
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -132,7 +132,7 @@ class SecondFragment : Fragment() {
     }
 
     /**
-    When the alarm is removed from the list.
+    * When the alarm is removed from the list.
      */
     override fun onDestroyView() {
         super.onDestroyView()
