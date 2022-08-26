@@ -30,7 +30,6 @@ class CustomAdapter(
 ) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
 
     private lateinit var parent: ViewGroup
-    private var switch_state = true
 
     /**
     * Creates a new view holder when there is no existing view holders
@@ -73,7 +72,7 @@ class CustomAdapter(
             holder.alarmTime.text = timeString
         }
 
-        switch_state = holder.switch.isActivated
+        var switch_state = holder.switch.isEnabled
         holder.switch.setOnClickListener {
             switch_state = switch_state != true
         }
@@ -82,7 +81,7 @@ class CustomAdapter(
             val alarmName = alarm_names.get(position)
             val alarm_hour = alarm_hours.get(position)
             val alarm_min = alarm_minutes.get(position)
-            val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, switch_state)
+            val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, !switch_state)
 
             parent.findFragment<FirstFragment>()
                 .fragmentManager?.let { it1 -> dialog.show(it1, "test") }
