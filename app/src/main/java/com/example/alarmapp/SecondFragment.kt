@@ -27,6 +27,9 @@ import java.util.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
+ * This part is used when adding a new alarm using the + button
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
  */
 class SecondFragment : Fragment() {
 
@@ -38,6 +41,10 @@ class SecondFragment : Fragment() {
     private var hour: Int? = null
     private var minute: Int? = null
 
+    /*
+    The screen that initially pops up when you click the + button
+    @return the root of binding.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +58,9 @@ class SecondFragment : Fragment() {
         return binding.root
     }
 
+    /*
+    The screen that pops up when you go to select your preferred alarm time.
+     */
     private fun openTimePicker(){
         //True if in military time, false if using 12 hours
         val isSystem24Hour = is24HourFormat(requireContext())
@@ -88,6 +98,9 @@ class SecondFragment : Fragment() {
         }
     }
 
+    /*
+    Unsure here ...
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -118,6 +131,9 @@ class SecondFragment : Fragment() {
         }
     }
 
+    /*
+    When the alarm is removed from the list.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
