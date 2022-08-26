@@ -23,9 +23,11 @@ Our main source of information came from the android developer document guides a
 https://developer.android.com/docs
 
 Extra Implementations:
+
 https://github.com/xabaras/RecyclerViewSwipeDecorator
 https://github.com/anugotta/FlipTimerView
 
 Many youtube videos have been very helpful.
+
 https://www.youtube.com/watch?v=n9FN0odXqi0&ab_channel=Foxandroid
 https://www.youtube.com/watch?v=BwMIbW52xLc&ab_channel=Dr.HusseinInTech
