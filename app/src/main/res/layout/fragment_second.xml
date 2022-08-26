@@ -29,7 +29,7 @@
         android:inputType="text"
         android:importantForAutofill="no"
         android:layout_marginTop="25dp"
-        android:maxLength="4"/>
+        android:maxLength="7"/>
 
     <Button
         android:id="@+id/button_second"

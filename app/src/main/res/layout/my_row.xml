@@ -12,8 +12,10 @@
         android:layout_marginBottom="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:padding="12dp">
 
 
@@ -21,7 +23,6 @@
                 android:id="@+id/alarm_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/test"
                 android:textSize="45sp"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -34,7 +35,6 @@
                 android:id="@+id/alarm_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/test"
                 android:textColor="#000"
                 android:textSize="35sp"
                 android:textStyle="bold"
@@ -44,6 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
+                android:id="@+id/alarm_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
