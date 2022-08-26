@@ -15,9 +15,29 @@ import java.lang.Math.abs
 import java.util.*
 import kotlin.concurrent.fixedRateTimer
 
-class EditDialog(private val name: String, private val hour: Int, private val minute: Int, private val time: String, private val switch_state: Boolean) : DialogFragment() {
+/**
+ * Edit dialog that appears when alarm is being edited.
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
+ */
+class EditDialog(
+    private val name: String,
+    private val hour: Int,
+    private val minute: Int,
+    private val time: String,
+    private val switch_state: Boolean) : DialogFragment() {
+
     private var _binding: EditDialogBinding? = null
     private val binding get() = _binding!!
+
+    /**
+     * Called when View is created. The view will later be terminated .
+     * @param inflater, converts XML to a View
+     * @param container, parent view that the Dialog's UI should be attached to.
+     * @param savedInstanceState, reconstructed by previous state
+     *
+     * @return The View for the Dialog's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,19 +68,28 @@ class EditDialog(private val name: String, private val hour: Int, private val mi
             if(currentHour >= hour && currentMinute >= minute){
                 hourDifference = 23 - hourDifference
                 minuteDifference = 60 - minuteDifference
-                countdown = hourToMilliSecond(hourDifference) + minuteToMilliSecond(minuteDifference) - secondToMilliSecond(currentSeconds)
+                countdown = hourToMilliSecond(hourDifference)
+                + minuteToMilliSecond(minuteDifference) - secondToMilliSecond(currentSeconds)
             }else{
-                countdown = hourToMilliSecond(hourDifference) + minuteToMilliSecond(minuteDifference) - secondToMilliSecond(currentSeconds)
+                countdown = hourToMilliSecond(hourDifference)
+                + minuteToMilliSecond(minuteDifference) - secondToMilliSecond(currentSeconds)
             }
 
 
             binding.timerProgramCountdown.startCountDown(countdown.toLong())
             binding.timerProgramCountdown.setCountdownListener(object :
                 CountDownClock.CountdownCallBack {
+
+                /**
+                 * Member function which is called when the countdown is about to finish
+                 */
                 override fun countdownAboutToFinish() {
-                    //TODO Add your code here
+                    //Has to be implemented
                 }
 
+                /**
+                 * When the countdown has finished this function is called
+                 */
                 override fun countdownFinished() {
                     binding.timerProgramCountdown.visibility = View.INVISIBLE
                     binding.setTime.hint = "Alarm is not set"
@@ -74,14 +103,29 @@ class EditDialog(private val name: String, private val hour: Int, private val mi
         return binding.root
     }
 
+    /**
+     * Function that converts hours to milliseconds
+     * @param hour, The hour to be converted
+     * @return hour converted to milliseconds
+     */
     private fun hourToMilliSecond(hour: Int): Int {
         return hour * 3600000
     }
 
+    /**
+     * Function that converts minutes to milliseconds
+     * @param minute, The minute to be converted
+     * @return minute converted to milliseconds
+     */
     private fun minuteToMilliSecond(minute: Int): Int{
         return minute * 60000
     }
 
+    /**
+     * Function that converts seconds to milliseconds
+     * @param second, The second to be converted
+     * @return second converted to milliseconds
+     */
     private fun secondToMilliSecond(second: Int): Int{
         return second * 1000
     }

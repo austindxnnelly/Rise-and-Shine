@@ -43,8 +43,12 @@ class SecondFragment : Fragment() {
     private var alarm_ids = ArrayList<Int>()
 
     /**
-    * The screen that initially pops up when you click the + button
-    * @return the root of binding.
+     * Called when View is created. The view will later be terminated .
+     * @param inflater, converts XML to a View
+     * @param container, parent view that the Fragment's UI should be attached to.
+     * @param savedInstanceState, reconstructed by previous state
+     *
+     * @return The View for the Fragment's UI, or null.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -100,7 +104,9 @@ class SecondFragment : Fragment() {
     }
 
     /**
-    * Unsure here ...
+     * Called immediately after onCreateView.
+     * @param view, The View returned by onCreateView
+     * @param savedInstanceState, re-constructed from a previous saved state
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -143,7 +149,7 @@ class SecondFragment : Fragment() {
     }
 
     /**
-    * When the alarm is removed from the list.
+     * Function that is called when View needs to be destroyed
      */
     override fun onDestroyView() {
         super.onDestroyView()
