@@ -54,9 +54,9 @@ class FirstFragment : Fragment() {
     }
 
     /**
-    unsure here...
-    @param
-    @param
+    * unsure here...
+    * @param
+    * @param
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,8 +81,8 @@ class FirstFragment : Fragment() {
 
 
     /**
-    function shows the new view of the app after an alarm
-    has been removed.
+    * function shows the new view of the app after an alarm
+    * has been removed.
      */
     override fun onDestroyView() {
         super.onDestroyView()
@@ -90,8 +90,8 @@ class FirstFragment : Fragment() {
     }
 
     /**
-    function which stores the data (being the alarms) in an array
-    for view to a user
+    * function which stores the data (being the alarms) in an array
+    * for view to a user
      */
     private fun storeDataInArrays(){
         val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
@@ -112,8 +112,8 @@ class FirstFragment : Fragment() {
     }
 
     /**
-    Function that allows alarms to be removed from the app
-    by swiping them to the side.
+    * Function that allows alarms to be removed from the app
+    * by swiping them to the side.
      */
     private fun swipeToDelete(){
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(

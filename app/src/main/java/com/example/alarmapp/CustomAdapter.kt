@@ -32,9 +32,9 @@ class CustomAdapter(
     private var switch_state = true
 
     /**
-    Unsure here
-    @param
-    @param
+    * Unsure here
+    * @param
+    * @param
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -44,10 +44,10 @@ class CustomAdapter(
     }
 
     /**
-    Sets the correct time of the alarm.
-    Uses 24 hour format in order to do so.
-    @param
-    @param
+    * Sets the correct time of the alarm.
+    * Uses 24 hour format in order to do so.
+    * @param
+    * @param
      */
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -89,8 +89,8 @@ class CustomAdapter(
     }
 
     /**
-    Gets the count of the items in the database
-    @return alarm names.size, the amount of alarms in a users app.
+    * Gets the count of the items in the database
+    * @return alarm names.size, the amount of alarms in a users app.
      */
     override fun getItemCount(): Int {
         return alarm_names.size
