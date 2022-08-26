@@ -26,8 +26,8 @@ class myBroadcastReceiver : BroadcastReceiver(){
 
         val builder = NotificationCompat.Builder(context, "alarmApp")
             .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle(R.string.app_name.toString()) //change to R.appTitle (or similar)
-            .setContentText("Alarm is ringing") //change to unique name for each alarm
+            //.setContentTitle(R.string.app_name.toString())
+            .setContentText("ALARM IS RINGING") //change to unique name for each alarm
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

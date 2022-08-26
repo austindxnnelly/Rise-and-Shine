@@ -20,6 +20,7 @@ import android.widget.Toast
 import com.example.alarmapp.databinding.ActivityMainBinding
 import android.icu.util.Calendar
 import android.icu.util.Calendar.*
+import androidx.annotation.RequiresApi
 
 /**
  * Main class, used for our notification channel, allowing
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     private fun createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val name : CharSequence = "alarmRingingChannel"
-            val description = "Channel for Alarm Manager"
+            val description = "Channel for Alarms"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("alarmApp",name,importance)
             channel.description = description
@@ -78,22 +79,36 @@ class MainActivity : AppCompatActivity() {
      * @param id the private id for alarm (used as request code)
      */
     fun setAlarm(hour : Int, minute: Int, id: Int){
+        var daily = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
                 set(HOUR_OF_DAY, hour)
                 set(MINUTE, minute)
             }
-
             alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, myBroadcastReceiver::class.java)
 
+            val rightNow = Calendar.getInstance()
+            // if alarm is set in the past add a day onto it so it rings same time next day
+            if(calendar.before(rightNow)){
+                calendar.add(DATE, 1)
+            }
             alarmIntent = PendingIntent.getBroadcast(this, id, intent, FLAG_MUTABLE)
-            alarmMgr.setExact(
-                AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
-                alarmIntent
-            )
+            if(daily){
+                alarmMgr.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    AlarmManager.INTERVAL_DAY,
+                    alarmIntent
+                )
+            }else{
+                alarmMgr.setExact(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    alarmIntent
+                )
+            }
             Toast.makeText(this, "Alarm $id set successfully", Toast.LENGTH_SHORT).show()
         }
     }
