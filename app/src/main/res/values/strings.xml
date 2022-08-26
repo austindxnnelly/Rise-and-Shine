@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Rise&Shine</string>
+    <string name="app_name">alarmapp</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Rise&Shine</string>
+    <string name="first_fragment_label">Alarm App</string>
     <string name="second_fragment_label">Add Alarm</string>
     <string name="next">Next</string>
     <string name="previous">Confirm</string>
