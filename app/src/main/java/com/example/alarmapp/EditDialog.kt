@@ -62,6 +62,8 @@ class EditDialog(private val name: String, private val hour: Int, private val mi
                 }
 
                 override fun countdownFinished() {
+                    binding.timerProgramCountdown.visibility = View.INVISIBLE
+                    binding.setTime.hint = "Alarm is not set"
                 }
             })
         }else{
