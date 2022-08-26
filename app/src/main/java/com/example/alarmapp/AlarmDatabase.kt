@@ -25,7 +25,8 @@ class AlarmDatabase(
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
 
-    /* creates a table in the database for a new alarm
+    /**
+    creates a table in the database for a new alarm
     @param p0, the database for storing new set alarms
      */
     override fun onCreate(p0: SQLiteDatabase?) {
@@ -33,7 +34,8 @@ class AlarmDatabase(
         p0?.execSQL(query)
     }
 
-    /* updates an existing table entry in the database for a pre existing alarm
+    /**
+    updates an existing table entry in the database for a pre existing alarm
     @param p0, the database for storing new set alarms
     @param p1, p2, the alarms to be dropped and recreated when they are updated.
      */
@@ -42,7 +44,8 @@ class AlarmDatabase(
         onCreate(p0)
     }
 
-    /* adds an alarm to a table
+    /**
+    adds an alarm to a table
     @param name, the name of the alarm
     @param hour, the time in hours that the alarm will be set for
     @param minute, the time in minutes that the alarm will be set for
@@ -57,7 +60,8 @@ class AlarmDatabase(
         db.insert("alarm_library", null, contentValues)
     }
 
-    /* reads all of the alarms in the table
+    /**
+    reads all of the alarms in the table
     @param cursor ??
      */
     fun readAllData(): Cursor? {
@@ -72,7 +76,8 @@ class AlarmDatabase(
         return cursor
     }
 
-    /* deletes a row out of the table, which correlates to deleting a single alarm
+    /**
+    deletes a row out of the table, which correlates to deleting a single alarm
     @param rowId, the unique identifier of the row that is being removed.
      */
     fun deleteOneRow(rowId: String){

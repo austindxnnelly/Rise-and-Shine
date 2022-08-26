@@ -40,7 +40,7 @@ class SecondFragment : Fragment() {
     private var hour: Int? = null
     private var minute: Int? = null
 
-    /*
+    /**
     The screen that initially pops up when you click the + button
     @return the root of binding.
      */
@@ -58,7 +58,7 @@ class SecondFragment : Fragment() {
 
     }
 
-    /*
+    /**
     The screen that pops up when you go to select your preferred alarm time.
      */
     private fun openTimePicker(){
@@ -98,7 +98,7 @@ class SecondFragment : Fragment() {
         }
     }
 
-    /*
+    /**
     Unsure here ...
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -131,7 +131,7 @@ class SecondFragment : Fragment() {
         }
     }
 
-    /*
+    /**
     When the alarm is removed from the list.
      */
     override fun onDestroyView() {
