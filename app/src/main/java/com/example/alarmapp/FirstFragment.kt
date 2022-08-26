@@ -134,6 +134,9 @@ class FirstFragment : Fragment() {
                 val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
                 val id = alarm_ids.get(position)
                 db.deleteOneRow(id.toString())
+                //cancelling alarm
+                (activity as MainActivity).cancelAlarm(id)
+
                 alarm_ids.removeAt(position)
                 alarm_names.removeAt(position)
                 alarm_hours.removeAt(position)
