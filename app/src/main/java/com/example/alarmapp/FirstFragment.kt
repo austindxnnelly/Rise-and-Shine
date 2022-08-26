@@ -41,6 +41,9 @@ class FirstFragment : Fragment() {
     private var alarm_minutes = ArrayList<Int>()
     private lateinit var customAdapter : CustomAdapter
 
+    /**
+     * @return
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +53,7 @@ class FirstFragment : Fragment() {
 
     }
 
-    /*
+    /**
     unsure here...
     @param
     @param
@@ -77,7 +80,8 @@ class FirstFragment : Fragment() {
     }
 
 
-    /* function shows the new view of the app after an alarm
+    /**
+    function shows the new view of the app after an alarm
     has been removed.
      */
     override fun onDestroyView() {
@@ -85,7 +89,7 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 
-    /*
+    /**
     function which stores the data (being the alarms) in an array
     for view to a user
      */
@@ -107,7 +111,7 @@ class FirstFragment : Fragment() {
         }
     }
 
-    /*
+    /**
     Function that allows alarms to be removed from the app
     by swiping them to the side.
      */

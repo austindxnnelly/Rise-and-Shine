@@ -31,7 +31,7 @@ class CustomAdapter(
     private lateinit var parent: ViewGroup
     private var switch_state = true
 
-    /*
+    /**
     Unsure here
     @param
     @param
@@ -43,7 +43,7 @@ class CustomAdapter(
         return MyViewHolder(view)
     }
 
-    /*
+    /**
     Sets the correct time of the alarm.
     Uses 24 hour format in order to do so.
     @param
@@ -88,7 +88,7 @@ class CustomAdapter(
         }
     }
 
-    /*
+    /**
     Gets the count of the items in the database
     @return alarm names.size, the amount of alarms in a users app.
      */

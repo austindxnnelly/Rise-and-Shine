@@ -10,7 +10,9 @@ import android.os.Bundle
  * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly.
  */
 class AlarmActivity : AppCompatActivity() {
-    /* Sets the content to be shown on the page once you go to turn off the alarm.
+
+    /**
+    Sets the content to be shown on the page once you go to turn off the alarm.
     @param savedInstanceState, the state of the screen that is displayed.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
