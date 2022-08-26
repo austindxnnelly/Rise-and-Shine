@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.fragment.findNavController
 import com.example.alarmapp.databinding.FragmentSecondBinding
 import com.google.android.material.snackbar.Snackbar
@@ -48,7 +49,6 @@ class SecondFragment : Fragment() {
         }
 
         return binding.root
-
     }
 
     private fun openTimePicker(){

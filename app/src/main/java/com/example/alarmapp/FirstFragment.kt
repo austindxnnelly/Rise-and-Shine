@@ -95,7 +95,7 @@ class FirstFragment : Fragment() {
 
     private fun swipeToDelete(){
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
-            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            0,
             ItemTouchHelper.LEFT
         ){
             override fun onMove(
