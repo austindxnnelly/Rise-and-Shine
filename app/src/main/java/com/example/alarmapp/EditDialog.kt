@@ -65,13 +65,18 @@ class EditDialog(
             var hourDifference = abs(currentHour - hour)
             var minuteDifference = abs(currentMinute - minute)
 
-            if(currentHour >= hour && currentMinute >= minute){
+            if((currentHour == hour && currentMinute >= minute)){
                 hourDifference = 23 - hourDifference
                 minuteDifference = 60 - minuteDifference
                 countdown = (hourToMilliSecond(hourDifference)
                         + minuteToMilliSecond(minuteDifference)
                         - secondToMilliSecond(currentSeconds))
+            }else if((currentHour == hour && currentMinute < minute)){
+                countdown = (hourToMilliSecond(hourDifference)
+                        + minuteToMilliSecond(minuteDifference)
+                        - secondToMilliSecond(currentSeconds))
             }else{
+                hourDifference = 24 - hourDifference
                 countdown = (hourToMilliSecond(hourDifference)
                         + minuteToMilliSecond(minuteDifference)
                         - secondToMilliSecond(currentSeconds))
