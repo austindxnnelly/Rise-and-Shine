@@ -4,11 +4,9 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.Intent
-import android.icu.text.Normalizer.NO
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +17,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.example.alarmapp.databinding.ActivityMainBinding
-import java.util.*
 import android.icu.util.Calendar
 import android.icu.util.Calendar.*
-import android.util.Log
 
 /**
  * Main class, used for our notification channel, allowing
@@ -80,8 +75,9 @@ class MainActivity : AppCompatActivity() {
      * displays a short message
      * @param hour the hour when alarm should go off
      * @param minute the minute when alarm should go off
+     * @param id the private id for alarm (used as request code)
      */
-    fun setAlarm(hour : Int, minute: Int){
+    fun setAlarm(hour : Int, minute: Int, id: Int){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
@@ -92,28 +88,30 @@ class MainActivity : AppCompatActivity() {
             alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, myBroadcastReceiver::class.java)
 
-            alarmIntent = PendingIntent.getBroadcast(this, 0, intent, FLAG_MUTABLE)
+            alarmIntent = PendingIntent.getBroadcast(this, id, intent, FLAG_MUTABLE)
             alarmMgr.setExact(
                 AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,
                 alarmIntent
             )
-            Toast.makeText(this, "Alarm set successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Alarm $id set successfully", Toast.LENGTH_SHORT).show()
         }
     }
 
     /**
      * Function to cancel the alarm
      * displays a short message
+     * @param id the private id for alarm (used as request code)
+     *      -- NEEDS to be the same as was used to set alarm
      */
-    fun cancelAlarm(){
+    fun cancelAlarm(id : Int){
         alarmMgr = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, myBroadcastReceiver::class.java)
 
-        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, FLAG_MUTABLE)
+        alarmIntent = PendingIntent.getBroadcast(this, id, intent, FLAG_MUTABLE)
         alarmMgr.cancel(alarmIntent)
 
-        Toast.makeText(this, "Alarm Cancelled", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Alarm $id deleted", Toast.LENGTH_LONG).show()
     }
 
     /**

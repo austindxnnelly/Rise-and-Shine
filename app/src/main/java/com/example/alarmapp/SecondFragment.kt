@@ -40,6 +40,7 @@ class SecondFragment : Fragment() {
     private val binding get() = _binding!!
     private var hour: Int? = null
     private var minute: Int? = null
+    private var alarm_ids = ArrayList<Int>()
 
     /**
     * The screen that initially pops up when you click the + button
@@ -125,7 +126,17 @@ class SecondFragment : Fragment() {
                 db.addAlarm(name, hour!!, minute!!)
             }
 
-            (activity as MainActivity).setAlarm(hour!!, minute!!)
+            val cursor = db.readAllData()
+            if(cursor?.count != 0){
+                if (cursor != null) {
+                    while(cursor.moveToNext()){
+                        alarm_ids.add(cursor.getInt(0))
+                    }
+                }
+            }
+
+            val id = alarm_ids[alarm_ids.size-1]
+            (activity as MainActivity).setAlarm(hour!!, minute!!, id)
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
