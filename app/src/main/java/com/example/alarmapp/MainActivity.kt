@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             val name : CharSequence = "alarmRingingChannel"
             val description = "Channel for Alarm Manager"
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel("alarmApp",name,importance)
+            val channel = NotificationChannel("Rise&Shine",name,importance)
             channel.description = description
             val notificationManager = getSystemService(
                 NotificationManager::class.java
