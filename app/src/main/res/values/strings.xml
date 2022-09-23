@@ -17,4 +17,5 @@
     <string name="timeNotSet">Alarm is not set</string>
     <string name="test_time">00:00 PM</string>
     <string name="edit">Edit</string>
+    <string name="submit_button">Submit</string>
 </resources>
