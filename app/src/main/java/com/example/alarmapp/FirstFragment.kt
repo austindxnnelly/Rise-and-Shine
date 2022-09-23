@@ -5,6 +5,7 @@ import android.database.Cursor
 import android.graphics.Canvas
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
@@ -15,12 +16,14 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alarmapp.databinding.FragmentFirstBinding
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
+import kotlin.properties.Delegates
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -40,6 +43,7 @@ class FirstFragment : Fragment() {
     private var alarm_hours = ArrayList<Int>()
     private var alarm_minutes = ArrayList<Int>()
     private lateinit var customAdapter : CustomAdapter
+    private lateinit var holder: CustomAdapter.MyViewHolder
 
     /**
      * Called when View is created. The view will later be terminated .
@@ -122,7 +126,7 @@ class FirstFragment : Fragment() {
     private fun swipeToDelete(){
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             0,
-            ItemTouchHelper.LEFT
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ){
             /**
              * Called on move.
@@ -140,21 +144,52 @@ class FirstFragment : Fragment() {
              */
             @SuppressLint("NotifyDataSetChanged")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                holder = customAdapter.getHolder()
                 val position = viewHolder.adapterPosition
-                val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
-                val id = alarm_ids.get(position)
-                db.deleteOneRow(id.toString())
-                //cancelling alarm
-                (activity as MainActivity).cancelAlarm(id)
+                val timeString : String
+                val isSystem24Hour = DateFormat.is24HourFormat(context)
+                val hour = alarm_hours[position]
+                val minute = alarm_minutes[position]
+                val minuteString = if(minute < 10) "0$minute" else "$minute"
 
-                alarm_ids.removeAt(position)
-                alarm_names.removeAt(position)
-                alarm_hours.removeAt(position)
-                alarm_minutes.removeAt(position)
-                customAdapter.notifyItemRemoved(position)
-                if (alarm_names.size == 0){
-                    binding.emptyAlarmIV.visibility = View.VISIBLE
-                    binding.noAlarmTV.visibility = View.VISIBLE
+                if(!isSystem24Hour){
+                    val meridiemIndicator = if(hour > 11) "PM" else "AM"
+                    val hourString = if(hour == 0) "12" else if(hour > 12) hour - 12 else "$hour"
+                    timeString = "$hourString:$minuteString $meridiemIndicator"
+                }else{
+                    val hourString = if(hour < 10) "0$hour" else "$hour"
+                    timeString = "$hourString:$minuteString"
+                }
+                when(direction) {
+                    ItemTouchHelper.LEFT -> {
+                        val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+                        val id = alarm_ids.get(position)
+                        db.deleteOneRow(id.toString())
+                        //cancelling alarm
+                        (activity as MainActivity).cancelAlarm(id)
+
+                        alarm_ids.removeAt(position)
+                        alarm_names.removeAt(position)
+                        alarm_hours.removeAt(position)
+                        alarm_minutes.removeAt(position)
+                        customAdapter.notifyItemRemoved(position)
+                        if (alarm_names.size == 0) {
+                            if (alarm_names.size == 0) {
+                                binding.emptyAlarmIV.visibility = View.VISIBLE
+                                binding.noAlarmTV.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                    ItemTouchHelper.RIGHT -> {
+                        val switch_states = customAdapter.switch_states()
+                        val switch_state = switch_states[position]
+                        val alarmName = alarm_names.get(position)
+                        val alarm_hour = alarm_hours.get(position)
+                        val alarm_min = alarm_minutes.get(position)
+                        val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, switch_state)
+                        fragmentManager?.let { dialog.show(it, "Edit") }
+                        customAdapter.notifyDataSetChanged()
+                    }
                 }
             }
 
