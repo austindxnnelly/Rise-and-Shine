@@ -206,27 +206,37 @@ class FirstFragment : Fragment() {
                 isCurrentlyActive: Boolean
             ) {
                 val deleteColor = context?.let { ContextCompat.getColor(it, R.color.deleteColor) }
+                val editColor = context?.let { ContextCompat.getColor(it, R.color.editColor) }
                 val labelColor = context?.let { ContextCompat.getColor(it, R.color.labelColor) }
                 val deleteIcon = R.drawable.ic_baseline_delete_24
+                val editIcon = R.drawable.ic_baseline_edit_24
                 if (deleteColor != null) {
                     if (labelColor != null) {
-                        RecyclerViewSwipeDecorator.Builder(
-                            c,
-                            recyclerView,
-                            viewHolder,
-                            dX,
-                            dY,
-                            actionState,
-                            isCurrentlyActive
-                        )
-                            .addSwipeLeftBackgroundColor(deleteColor)
-                            .addSwipeLeftActionIcon(deleteIcon)
-                            .addSwipeLeftLabel("Delete")
-                            .setSwipeLeftLabelColor(labelColor)
-                            .setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
-                            .setSwipeLeftLabelTypeface(Typeface.DEFAULT_BOLD)
-                            .create()
-                            .decorate()
+                        if (editColor != null) {
+                            RecyclerViewSwipeDecorator.Builder(
+                                c,
+                                recyclerView,
+                                viewHolder,
+                                dX,
+                                dY,
+                                actionState,
+                                isCurrentlyActive
+                            )
+                                .addSwipeLeftBackgroundColor(deleteColor)
+                                .addSwipeRightBackgroundColor(editColor)
+                                .addSwipeLeftActionIcon(deleteIcon)
+                                .addSwipeLeftLabel("Delete")
+                                .addSwipeRightLabel("Edit")
+                                .addSwipeRightActionIcon(editIcon)
+                                .setSwipeLeftLabelColor(labelColor)
+                                .setSwipeRightLabelColor(labelColor)
+                                .setSwipeRightLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
+                                .setSwipeRightLabelTypeface(Typeface.DEFAULT_BOLD)
+                                .setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
+                                .setSwipeLeftLabelTypeface(Typeface.DEFAULT_BOLD)
+                                .create()
+                                .decorate()
+                        }
                     }
                 }
 
