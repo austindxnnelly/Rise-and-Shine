@@ -30,6 +30,8 @@ class CustomAdapter(
 ) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
 
     private lateinit var parent: ViewGroup
+    private  lateinit var holder: MyViewHolder
+    private var switch_states = ArrayList<Boolean>()
 
     /**
     * Creates a new view holder when there is no existing view holders
@@ -72,20 +74,10 @@ class CustomAdapter(
             holder.alarmTime.text = timeString
         }
 
-        var switch_state = holder.switch.isEnabled
+        this.holder = holder
+        switch_states.add(holder.switch.isChecked)
         holder.switch.setOnClickListener {
-            switch_state = switch_state != true
-        }
-
-        holder.itemView.setOnLongClickListener{
-            val alarmName = alarm_names.get(position)
-            val alarm_hour = alarm_hours.get(position)
-            val alarm_min = alarm_minutes.get(position)
-            val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, !switch_state)
-
-            parent.findFragment<FirstFragment>()
-                .fragmentManager?.let { it1 -> dialog.show(it1, "test") }
-            true
+            switch_states[position] = holder.switch.isChecked
         }
     }
 
@@ -95,6 +87,14 @@ class CustomAdapter(
      */
     override fun getItemCount(): Int {
         return alarm_names.size
+    }
+
+    fun getHolder(): MyViewHolder {
+        return holder
+    }
+
+    fun switch_states(): ArrayList<Boolean> {
+        return switch_states
     }
 
     /**
