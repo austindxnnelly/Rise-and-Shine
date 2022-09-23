@@ -71,7 +71,7 @@ class EditDialog(
                 countdown = (hourToMilliSecond(hourDifference)
                         + minuteToMilliSecond(minuteDifference)
                         - secondToMilliSecond(currentSeconds))
-            }else if((currentHour == hour && currentMinute < minute)){
+            }else if((currentHour == hour && currentMinute < minute) || (currentHour < hour && hour != 0)){
                 countdown = (hourToMilliSecond(hourDifference)
                         + minuteToMilliSecond(minuteDifference)
                         - secondToMilliSecond(currentSeconds))
