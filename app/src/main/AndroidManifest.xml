@@ -22,7 +22,6 @@
             android:parentActivityName=".MainActivity"
             android:exported="false"
             android:excludeFromRecents="true"/>
-        <activity android:name=".QuestionResult"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
