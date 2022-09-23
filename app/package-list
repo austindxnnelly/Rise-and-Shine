@@ -1,8 +1,11 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.example.alarmapp////PointingToDeclaration/app/com.example.alarmapp/index.html
+$dokka.location:com.example.alarmapp/AddToDatabase///PointingToDeclaration/app/com.example.alarmapp/-add-to-database/index.html
+$dokka.location:com.example.alarmapp/AddToDatabase/getQuestion/#/PointingToDeclaration/app/com.example.alarmapp/-add-to-database/get-question.html
 $dokka.location:com.example.alarmapp/AlarmActivity///PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/index.html
 $dokka.location:com.example.alarmapp/AlarmActivity/AlarmActivity/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/-alarm-activity.html
+$dokka.location:com.example.alarmapp/AlarmActivity/onClick/#android.view.View?/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/on-click.html
 $dokka.location:com.example.alarmapp/AlarmDatabase///PointingToDeclaration/app/com.example.alarmapp/-alarm-database/index.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/AlarmDatabase/#android.content.Context?#kotlin.String?#android.database.sqlite.SQLiteDatabase.CursorFactory?#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/-alarm-database.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/addAlarm/#kotlin.String?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/add-alarm.html
@@ -35,6 +38,22 @@ $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.v
 $dokka.location:com.example.alarmapp/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-options-item-selected.html
 $dokka.location:com.example.alarmapp/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-support-navigate-up.html
 $dokka.location:com.example.alarmapp/MainActivity/setAlarm/#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-main-activity/set-alarm.html
+$dokka.location:com.example.alarmapp/QuestionDatabase///PointingToDeclaration/app/com.example.alarmapp/-question-database/index.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/QuestionDatabase/#kotlin.Int#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-question-database/-question-database.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getCorrect_ans/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-correct_ans.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getId/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-id.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getOption_four/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-option_four.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getOption_one/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-option_one.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getOption_three/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-option_three.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getOption_two/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-option_two.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/getQuestion/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-question.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setCorrect_ans/#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-correct_ans.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setId/#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-id.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setOption_four/#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-option_four.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setOption_one/#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-option_one.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setOption_three/#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-option_three.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setOption_two/#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-option_two.html
+$dokka.location:com.example.alarmapp/QuestionDatabase/setQuestion/#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-question-database/set-question.html
 $dokka.location:com.example.alarmapp/SecondFragment///PointingToDeclaration/app/com.example.alarmapp/-second-fragment/index.html
 $dokka.location:com.example.alarmapp/SecondFragment/SecondFragment/#/PointingToDeclaration/app/com.example.alarmapp/-second-fragment/-second-fragment.html
 $dokka.location:com.example.alarmapp/SecondFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-second-fragment/on-create-view.html
