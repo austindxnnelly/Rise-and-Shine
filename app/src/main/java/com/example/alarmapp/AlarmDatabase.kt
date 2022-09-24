@@ -34,7 +34,7 @@ class AlarmDatabase(
     override fun onCreate(p0: SQLiteDatabase?) {
         val query =
             "CREATE TABLE alarm_library (_id INTEGER PRIMARY KEY AUTOINCREMENT " +
-                    ", alarm_name TEXT, alarm_hour INTEGER, alarm_minute INTEGER);"
+                    ", alarm_name TEXT, alarm_hour INTEGER, alarm_minute INTEGER, switch_state INTEGER);"
         p0?.execSQL(query)
     }
 
@@ -54,13 +54,14 @@ class AlarmDatabase(
      * @param hour, the time in hours that the alarm will be set for
      * @param minute, the time in minutes that the alarm will be set for
      */
-    fun addAlarm(name: String?, hour: Int, minute: Int) {
+    fun addAlarm(name: String?, hour: Int, minute: Int, switch_state: Int) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
 
         contentValues.put("alarm_name", name)
         contentValues.put("alarm_hour", hour)
         contentValues.put("alarm_minute", minute)
+        contentValues.put("switch_state", switch_state)
         db.insert("alarm_library", null, contentValues)
     }
 
@@ -88,12 +89,13 @@ class AlarmDatabase(
         db.delete("alarm_library", "_id=?", arrayOf(rowId))
     }
 
-    fun updateDatabase(rowId: String, name: String, hour: Int, minute: Int){
+    fun updateDatabase(rowId: String, name: String, hour: Int, minute: Int, switch_state: Int){
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("alarm_name", name)
         contentValues.put("alarm_hour", hour)
         contentValues.put("alarm_minute", minute)
+        contentValues.put("switch_state", switch_state)
         db.update("alarm_library", contentValues, "_id=?", arrayOf(rowId))
     }
 

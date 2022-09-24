@@ -129,7 +129,7 @@ class SecondFragment : Fragment() {
 
             val name: String = binding.addAlarmName.text.toString()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                db.addAlarm(name, hour!!, minute!!)
+                db.addAlarm(name, hour!!, minute!!, 1)
             }
 
             val cursor = db.readAllData()

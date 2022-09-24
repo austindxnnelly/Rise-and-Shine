@@ -56,7 +56,11 @@ class EditDialog(
 
         binding.EditButton.setOnClickListener {
             val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
-            db.updateDatabase(id, binding.EditName.text.toString(), hour, minute)
+            var s = 0
+            if(switch_state){
+                s = 1
+            }
+            db.updateDatabase(id, binding.EditName.text.toString(), hour, minute, s)
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             dismiss()
