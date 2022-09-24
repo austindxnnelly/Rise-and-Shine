@@ -42,4 +42,15 @@ class EditDialogTest{
             true).secondToMilliSecond(10)
         assertEquals(result, 10*1000)
     }
+
+    @Test
+    fun checkView(){
+        val result = EditDialog(
+            "0",
+            "test",
+            0,
+            0,
+            "00:00",
+            true).view
+    }
 }
