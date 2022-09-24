@@ -52,5 +52,6 @@ class EditDialogTest{
             0,
             "00:00",
             true).view
+        assertNotNull(result)
     }
 }
