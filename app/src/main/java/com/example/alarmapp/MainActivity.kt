@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
      * Function to create notification channel
      * which allows alarms to sound
      */
-    private fun createNotificationChannel() {
+    fun createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val name : CharSequence = "alarmRingingChannel"
             val description = "Channel for Alarms"
