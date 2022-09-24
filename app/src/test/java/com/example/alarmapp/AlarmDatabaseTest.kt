@@ -7,7 +7,8 @@ import org.junit.Test
 class AlarmDatabaseTest{
     @Test
     fun testDatabase(){
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        val appContext = InstrumentationRegistry.getInstrumentation().context
+
         val db = AlarmDatabase(appContext, "TestDatabase", null, 1)
         db.addAlarm("test", 0, 0, 0)
         val cursor = db.readAllData()
