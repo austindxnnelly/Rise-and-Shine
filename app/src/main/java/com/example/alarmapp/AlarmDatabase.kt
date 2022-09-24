@@ -20,6 +20,7 @@ class AlarmDatabase(
     factory: SQLiteDatabase.CursorFactory?,
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
+    private val databaseString: String = "alarm_library"
 
     /**
      * creates a table in the database for a new alarm
@@ -27,7 +28,7 @@ class AlarmDatabase(
      */
     override fun onCreate(p0: SQLiteDatabase?) {
         val query =
-            "CREATE TABLE alarm_library (_id INTEGER PRIMARY KEY AUTOINCREMENT " +
+            "CREATE TABLE $databaseString (_id INTEGER PRIMARY KEY AUTOINCREMENT " +
                     ", alarm_name TEXT, alarm_hour INTEGER, alarm_minute INTEGER, switch_state INTEGER);"
         p0?.execSQL(query)
     }
@@ -38,7 +39,7 @@ class AlarmDatabase(
      * @param p1, p2, the alarms to be dropped and recreated when they are updated.
      */
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        p0?.execSQL("DROP TABLE IF EXISTS alarm_library")
+        p0?.execSQL("DROP TABLE IF EXISTS $databaseString")
         onCreate(p0)
     }
 
@@ -57,14 +58,14 @@ class AlarmDatabase(
         contentValues.put("alarm_hour", hour)
         contentValues.put("alarm_minute", minute)
         contentValues.put("switch_state", switch_state)
-        db.insert("alarm_library", null, contentValues)
+        db.insert(databaseString, null, contentValues)
     }
 
     /**
      * reads all of the alarms in the table
      */
     fun readAllData(): Cursor? {
-        val query = "SELECT * FROM alarm_library"
+        val query = "SELECT * FROM $databaseString"
         val db = this.readableDatabase
 
         var cursor: Cursor? = null
@@ -81,7 +82,7 @@ class AlarmDatabase(
      */
     fun deleteOneRow(rowId: String) {
         val db = this.writableDatabase
-        db.delete("alarm_library", "_id=?", arrayOf(rowId))
+        db.delete(databaseString, "_id=?", arrayOf(rowId))
     }
 
     /**
@@ -99,7 +100,7 @@ class AlarmDatabase(
         contentValues.put("alarm_hour", hour)
         contentValues.put("alarm_minute", minute)
         contentValues.put("switch_state", switch_state)
-        db.update("alarm_library", contentValues, "_id=?", arrayOf(rowId))
+        db.update(databaseString, contentValues, "_id=?", arrayOf(rowId))
     }
 
 }

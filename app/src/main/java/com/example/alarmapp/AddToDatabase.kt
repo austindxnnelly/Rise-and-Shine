@@ -1,7 +1,14 @@
 package com.example.alarmapp
 
+/**
+ * Add to database object. Used as a database for the math questions.
+ */
 object AddToDatabase {
 
+    /**
+     * Get question from the database.
+     * @return arraylist of questions.
+     */
     fun getQuestion():ArrayList<QuestionDatabase>{
         var que:ArrayList<QuestionDatabase> = arrayListOf()
 
