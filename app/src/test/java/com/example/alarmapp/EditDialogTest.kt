@@ -6,7 +6,13 @@ import kotlinx.android.synthetic.main.my_row.*
 import org.junit.Assert.*
 import org.junit.Test
 
+/**
+ * This class is used to test the edit dialog class.
+ */
 class EditDialogTest{
+    /**
+     * This test makes sure that the hourToMilliSecond function is working correctly.
+     */
     @Test
     fun checkHourToMilliSecond(){
         val result = EditDialog(
@@ -19,6 +25,9 @@ class EditDialogTest{
         assertEquals(result, 10*3600000)
     }
 
+    /**
+     * This test makes sure that the minuteToMilliSecond function is working correctly.
+     */
     @Test
     fun checkMinuteToMilliSecond(){
         val result = EditDialog(
@@ -31,6 +40,9 @@ class EditDialogTest{
         assertEquals(result, 10*60000)
     }
 
+    /**
+     * This test makes sure that the secondToMilliSecond function is working correctly.
+     */
     @Test
     fun checkSecondToMilliSecond(){
         val result = EditDialog(
