@@ -124,7 +124,7 @@ class EditDialog(
      * @param hour, The hour to be converted
      * @return hour converted to milliseconds
      */
-    private fun hourToMilliSecond(hour: Int): Int {
+    fun hourToMilliSecond(hour: Int): Int {
         return hour * 3600000
     }
 
@@ -133,7 +133,7 @@ class EditDialog(
      * @param minute, The minute to be converted
      * @return minute converted to milliseconds
      */
-    private fun minuteToMilliSecond(minute: Int): Int{
+    fun minuteToMilliSecond(minute: Int): Int{
         return minute * 60000
     }
 
@@ -142,7 +142,7 @@ class EditDialog(
      * @param second, The second to be converted
      * @return second converted to milliseconds
      */
-    private fun secondToMilliSecond(second: Int): Int{
+    fun secondToMilliSecond(second: Int): Int{
         return second * 1000
     }
 }
