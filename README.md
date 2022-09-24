@@ -7,11 +7,11 @@ Liam Iggo, Shay Stevens, Dougal Colquhoun, Austin Donnelly
 Note:
 The database has been updated so an error may occur if previous database was not deleted.<br />
 To fix follow steps below:<br />
- 1. Go to device file explorer
- 2. Open Data folder
- 3. Open com.example.alarmapp folder
- 4. Open databases folder
- 5. Delete the database file
+1.  Go to device file explorer
+2.  Open Data folder
+3.  Open com.example.alarmapp folder
+4.  Open databases folder
+5.  Delete the database file
 
 Codacy report:
 https://app.codacy.com/gh/shaystevens/COSC345
