@@ -29,7 +29,10 @@ $dokka.location:com.example.alarmapp/CustomAdapter/onCreateViewHolder/#android.v
 $dokka.location:com.example.alarmapp/CustomAdapter/switch_states/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/switch_states.html
 $dokka.location:com.example.alarmapp/EditDialog///PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/index.html
 $dokka.location:com.example.alarmapp/EditDialog/EditDialog/#kotlin.String#kotlin.String#kotlin.Int#kotlin.Int#kotlin.String#kotlin.Boolean/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/-edit-dialog.html
+$dokka.location:com.example.alarmapp/EditDialog/hourToMilliSecond/#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/hour-to-milli-second.html
+$dokka.location:com.example.alarmapp/EditDialog/minuteToMilliSecond/#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/minute-to-milli-second.html
 $dokka.location:com.example.alarmapp/EditDialog/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/on-create-view.html
+$dokka.location:com.example.alarmapp/EditDialog/secondToMilliSecond/#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/second-to-milli-second.html
 $dokka.location:com.example.alarmapp/FirstFragment///PointingToDeclaration/app/com.example.alarmapp/-first-fragment/index.html
 $dokka.location:com.example.alarmapp/FirstFragment/FirstFragment/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/-first-fragment.html
 $dokka.location:com.example.alarmapp/FirstFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/on-create-view.html
