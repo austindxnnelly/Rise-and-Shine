@@ -95,6 +95,9 @@ class CustomAdapter(
         }
     }
 
+    /**
+     * Function that adds the switch states stored in the database into an array.
+     */
     fun addStatesToArray() {
         val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
         val cursor = db.readAllData()
@@ -115,10 +118,16 @@ class CustomAdapter(
         return alarm_names.size
     }
 
+    /**
+     * returns the holder.
+     */
     fun getHolder(): MyViewHolder {
         return holder
     }
 
+    /**
+     * returns the switch states array.
+     */
     fun switch_states(): ArrayList<Boolean> {
         return switch_states
     }

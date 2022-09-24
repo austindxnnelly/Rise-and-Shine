@@ -1,20 +1,15 @@
 package com.example.alarmapp
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.asp.fliptimerviewlibrary.CountDownClock
 import com.example.alarmapp.databinding.EditDialogBinding
 import java.lang.Math.abs
 import java.util.*
-import kotlin.concurrent.fixedRateTimer
 
 /**
  * Edit dialog that appears when alarm is being edited.
@@ -44,7 +39,7 @@ class EditDialog(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = EditDialogBinding.inflate(inflater, container, false)
         if(name == ""){
             binding.EditName.hint = "Alarm Name"

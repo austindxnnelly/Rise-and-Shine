@@ -1,17 +1,11 @@
 package com.example.alarmapp
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.icu.util.Calendar
-import android.os.Build
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import java.sql.RowId
+
 
 /**
  * Class to act as a point of reference between our code and the database
@@ -53,6 +47,7 @@ class AlarmDatabase(
      * @param name, the name of the alarm
      * @param hour, the time in hours that the alarm will be set for
      * @param minute, the time in minutes that the alarm will be set for
+     * @param switch_state, the state of the switch
      */
     fun addAlarm(name: String?, hour: Int, minute: Int, switch_state: Int) {
         val db = this.writableDatabase
@@ -89,6 +84,14 @@ class AlarmDatabase(
         db.delete("alarm_library", "_id=?", arrayOf(rowId))
     }
 
+    /**
+     * Updates database with parameters.
+     * @param rowId, the unique identifier of the row that is being edited.
+     * @param name, the name of the alarm
+     * @param hour, the time in hours that the alarm will be set for
+     * @param minute, the time in minutes that the alarm will be set for
+     * @param switch_state, the state of the switch
+     */
     fun updateDatabase(rowId: String, name: String, hour: Int, minute: Int, switch_state: Int){
         val db = this.writableDatabase
         val contentValues = ContentValues()
