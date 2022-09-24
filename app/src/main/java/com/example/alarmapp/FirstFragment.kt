@@ -183,10 +183,11 @@ class FirstFragment : Fragment() {
                     ItemTouchHelper.RIGHT -> {
                         val switch_states = customAdapter.switch_states()
                         val switch_state = switch_states[position]
+                        val id = alarm_ids.get(position)
                         val alarmName = alarm_names.get(position)
                         val alarm_hour = alarm_hours.get(position)
                         val alarm_min = alarm_minutes.get(position)
-                        val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, switch_state)
+                        val dialog = EditDialog(id.toString(), alarmName, alarm_hour, alarm_min, timeString, switch_state)
                         fragmentManager?.let { dialog.show(it, "Edit") }
                         customAdapter.notifyDataSetChanged()
                     }

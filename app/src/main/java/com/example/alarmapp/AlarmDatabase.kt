@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.icu.util.Calendar
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import java.sql.RowId
 
@@ -85,6 +86,15 @@ class AlarmDatabase(
     fun deleteOneRow(rowId: String) {
         val db = this.writableDatabase
         db.delete("alarm_library", "_id=?", arrayOf(rowId))
+    }
+
+    fun updateDatabase(rowId: String, name: String, hour: Int, minute: Int){
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("alarm_name", name)
+        contentValues.put("alarm_hour", hour)
+        contentValues.put("alarm_minute", minute)
+        db.update("alarm_library", contentValues, "_id=?", arrayOf(rowId))
     }
 
 }

@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.asp.fliptimerviewlibrary.CountDownClock
 import com.example.alarmapp.databinding.EditDialogBinding
 import java.lang.Math.abs
@@ -21,6 +22,7 @@ import kotlin.concurrent.fixedRateTimer
  * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
  */
 class EditDialog(
+    private val id: String,
     private val name: String,
     private val hour: Int,
     private val minute: Int,
@@ -51,6 +53,14 @@ class EditDialog(
         binding.EditName.setText(name)
 
         binding.EditTime.text = time
+
+        binding.EditButton.setOnClickListener {
+            val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+            db.updateDatabase(id, binding.EditName.text.toString(), hour, minute)
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            dismiss()
+        }
 
         if(switch_state) {
             binding.timerProgramCountdown.visibility = View.VISIBLE
