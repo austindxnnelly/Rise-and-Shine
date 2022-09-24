@@ -41,6 +41,7 @@ $dokka.location:com.example.alarmapp/FirstFragment/onViewCreated/#android.view.V
 $dokka.location:com.example.alarmapp/MainActivity///PointingToDeclaration/app/com.example.alarmapp/-main-activity/index.html
 $dokka.location:com.example.alarmapp/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/-main-activity.html
 $dokka.location:com.example.alarmapp/MainActivity/cancelAlarm/#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-main-activity/cancel-alarm.html
+$dokka.location:com.example.alarmapp/MainActivity/createNotificationChannel/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/create-notification-channel.html
 $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-create-options-menu.html
 $dokka.location:com.example.alarmapp/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-options-item-selected.html
 $dokka.location:com.example.alarmapp/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-support-navigate-up.html
