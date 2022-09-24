@@ -11,6 +11,8 @@ class AlarmDatabaseTest{
         val db = AlarmDatabase(appContext, "TestDatabase", null, 1)
         db.addAlarm("test", 0, 0, 0)
         val cursor = db.readAllData()
-        assertNotNull(cursor)
+        val id = cursor?.getInt(0)
+        db.updateDatabase(id.toString(), "test_change", 1, 1, 1)
+        db.deleteOneRow(id.toString())
     }
 }
