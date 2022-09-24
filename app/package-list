@@ -13,6 +13,7 @@ $dokka.location:com.example.alarmapp/AlarmDatabase/deleteOneRow/#kotlin.String/P
 $dokka.location:com.example.alarmapp/AlarmDatabase/onCreate/#android.database.sqlite.SQLiteDatabase?/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-create.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/onUpgrade/#android.database.sqlite.SQLiteDatabase?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-upgrade.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/readAllData/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/read-all-data.html
+$dokka.location:com.example.alarmapp/AlarmDatabase/updateDatabase/#kotlin.String#kotlin.String#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/update-database.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder///PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/index.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/CustomAdapter.MyViewHolder/#android.view.View/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/-custom-adapter.-my-view-holder.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/getAlarmName/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/get-alarm-name.html
@@ -26,7 +27,7 @@ $dokka.location:com.example.alarmapp/CustomAdapter/onBindViewHolder/#com.example
 $dokka.location:com.example.alarmapp/CustomAdapter/onCreateViewHolder/#android.view.ViewGroup#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/on-create-view-holder.html
 $dokka.location:com.example.alarmapp/CustomAdapter/switch_states/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/switch_states.html
 $dokka.location:com.example.alarmapp/EditDialog///PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/index.html
-$dokka.location:com.example.alarmapp/EditDialog/EditDialog/#kotlin.String#kotlin.Int#kotlin.Int#kotlin.String#kotlin.Boolean/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/-edit-dialog.html
+$dokka.location:com.example.alarmapp/EditDialog/EditDialog/#kotlin.String#kotlin.String#kotlin.Int#kotlin.Int#kotlin.String#kotlin.Boolean/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/-edit-dialog.html
 $dokka.location:com.example.alarmapp/EditDialog/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.alarmapp/-edit-dialog/on-create-view.html
 $dokka.location:com.example.alarmapp/FirstFragment///PointingToDeclaration/app/com.example.alarmapp/-first-fragment/index.html
 $dokka.location:com.example.alarmapp/FirstFragment/FirstFragment/#/PointingToDeclaration/app/com.example.alarmapp/-first-fragment/-first-fragment.html
