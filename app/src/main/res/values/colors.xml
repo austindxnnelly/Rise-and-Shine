@@ -11,4 +11,5 @@
     <color name="labelColor">#FFFFFF</color>
     <color name="lime">#4BF702</color>
     <color name="grey">#333333</color>
+    <color name="editColor">#00AEFF</color>
 </resources>

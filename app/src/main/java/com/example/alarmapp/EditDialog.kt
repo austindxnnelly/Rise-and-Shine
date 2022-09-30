@@ -1,19 +1,15 @@
 package com.example.alarmapp
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.asp.fliptimerviewlibrary.CountDownClock
 import com.example.alarmapp.databinding.EditDialogBinding
 import java.lang.Math.abs
 import java.util.*
-import kotlin.concurrent.fixedRateTimer
 
 /**
  * Edit dialog that appears when alarm is being edited.
@@ -21,6 +17,7 @@ import kotlin.concurrent.fixedRateTimer
  * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
  */
 class EditDialog(
+    private val id: String,
     private val name: String,
     private val hour: Int,
     private val minute: Int,
@@ -42,7 +39,7 @@ class EditDialog(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = EditDialogBinding.inflate(inflater, container, false)
         if(name == ""){
             binding.EditName.hint = "Alarm Name"
@@ -51,6 +48,18 @@ class EditDialog(
         binding.EditName.setText(name)
 
         binding.EditTime.text = time
+
+        binding.EditButton.setOnClickListener {
+            val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+            var s = 0
+            if(switch_state){
+                s = 1
+            }
+            db.updateDatabase(id, binding.EditName.text.toString(), hour, minute, s)
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            dismiss()
+        }
 
         if(switch_state) {
             binding.timerProgramCountdown.visibility = View.VISIBLE
@@ -71,7 +80,7 @@ class EditDialog(
                 countdown = (hourToMilliSecond(hourDifference)
                         + minuteToMilliSecond(minuteDifference)
                         - secondToMilliSecond(currentSeconds))
-            }else if((currentHour == hour && currentMinute < minute)){
+            }else if((currentHour == hour && currentMinute < minute) || (currentHour < hour && hour != 0)){
                 countdown = (hourToMilliSecond(hourDifference)
                         + minuteToMilliSecond(minuteDifference)
                         - secondToMilliSecond(currentSeconds))
@@ -115,7 +124,7 @@ class EditDialog(
      * @param hour, The hour to be converted
      * @return hour converted to milliseconds
      */
-    private fun hourToMilliSecond(hour: Int): Int {
+    fun hourToMilliSecond(hour: Int): Int {
         return hour * 3600000
     }
 
@@ -124,7 +133,7 @@ class EditDialog(
      * @param minute, The minute to be converted
      * @return minute converted to milliseconds
      */
-    private fun minuteToMilliSecond(minute: Int): Int{
+    fun minuteToMilliSecond(minute: Int): Int{
         return minute * 60000
     }
 
@@ -133,7 +142,7 @@ class EditDialog(
      * @param second, The second to be converted
      * @return second converted to milliseconds
      */
-    private fun secondToMilliSecond(second: Int): Int{
+    fun secondToMilliSecond(second: Int): Int{
         return second * 1000
     }
 }

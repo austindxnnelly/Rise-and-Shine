@@ -1,29 +1,22 @@
 package com.example.alarmapp
 
 import android.annotation.SuppressLint
-import android.database.Cursor
 import android.graphics.Canvas
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alarmapp.databinding.FragmentFirstBinding
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import kotlin.properties.Delegates
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -56,7 +49,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -183,10 +176,11 @@ class FirstFragment : Fragment() {
                     ItemTouchHelper.RIGHT -> {
                         val switch_states = customAdapter.switch_states()
                         val switch_state = switch_states[position]
+                        val id = alarm_ids.get(position)
                         val alarmName = alarm_names.get(position)
                         val alarm_hour = alarm_hours.get(position)
                         val alarm_min = alarm_minutes.get(position)
-                        val dialog = EditDialog(alarmName, alarm_hour, alarm_min, timeString, switch_state)
+                        val dialog = EditDialog(id.toString(), alarmName, alarm_hour, alarm_min, timeString, switch_state)
                         fragmentManager?.let { dialog.show(it, "Edit") }
                         customAdapter.notifyDataSetChanged()
                     }
@@ -206,27 +200,37 @@ class FirstFragment : Fragment() {
                 isCurrentlyActive: Boolean
             ) {
                 val deleteColor = context?.let { ContextCompat.getColor(it, R.color.deleteColor) }
+                val editColor = context?.let { ContextCompat.getColor(it, R.color.editColor) }
                 val labelColor = context?.let { ContextCompat.getColor(it, R.color.labelColor) }
                 val deleteIcon = R.drawable.ic_baseline_delete_24
+                val editIcon = R.drawable.ic_baseline_edit_24
                 if (deleteColor != null) {
                     if (labelColor != null) {
-                        RecyclerViewSwipeDecorator.Builder(
-                            c,
-                            recyclerView,
-                            viewHolder,
-                            dX,
-                            dY,
-                            actionState,
-                            isCurrentlyActive
-                        )
-                            .addSwipeLeftBackgroundColor(deleteColor)
-                            .addSwipeLeftActionIcon(deleteIcon)
-                            .addSwipeLeftLabel("Delete")
-                            .setSwipeLeftLabelColor(labelColor)
-                            .setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
-                            .setSwipeLeftLabelTypeface(Typeface.DEFAULT_BOLD)
-                            .create()
-                            .decorate()
+                        if (editColor != null) {
+                            RecyclerViewSwipeDecorator.Builder(
+                                c,
+                                recyclerView,
+                                viewHolder,
+                                dX,
+                                dY,
+                                actionState,
+                                isCurrentlyActive
+                            )
+                                .addSwipeLeftBackgroundColor(deleteColor)
+                                .addSwipeRightBackgroundColor(editColor)
+                                .addSwipeLeftActionIcon(deleteIcon)
+                                .addSwipeLeftLabel("Delete")
+                                .addSwipeRightLabel("Edit")
+                                .addSwipeRightActionIcon(editIcon)
+                                .setSwipeLeftLabelColor(labelColor)
+                                .setSwipeRightLabelColor(labelColor)
+                                .setSwipeRightLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
+                                .setSwipeRightLabelTypeface(Typeface.DEFAULT_BOLD)
+                                .setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
+                                .setSwipeLeftLabelTypeface(Typeface.DEFAULT_BOLD)
+                                .create()
+                                .decorate()
+                        }
                     }
                 }
 

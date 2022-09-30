@@ -32,6 +32,8 @@ class CustomAdapter(
     private lateinit var parent: ViewGroup
     private  lateinit var holder: MyViewHolder
     private var switch_states = ArrayList<Boolean>()
+    private var database_states = ArrayList<Int>()
+    private var count = 0
 
     /**
     * Creates a new view holder when there is no existing view holders
@@ -53,6 +55,10 @@ class CustomAdapter(
      */
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        addStatesToArray()
+        val state = database_states[position] == 1
+        holder.switch.isChecked = state
+
         val timeString : String
         val isSystem24Hour = DateFormat.is24HourFormat(context)
         val hour = alarm_hours[position]
@@ -78,6 +84,29 @@ class CustomAdapter(
         switch_states.add(holder.switch.isChecked)
         holder.switch.setOnClickListener {
             switch_states[position] = holder.switch.isChecked
+            var s = 0
+            if(holder.switch.isChecked){
+                s = 1
+            }
+            val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+            db.updateDatabase(alarm_ids.get(position).toString(), alarm_names.get(position), alarm_hours.get(position), alarm_minutes.get(position), s)
+            database_states.clear()
+            addStatesToArray()
+        }
+    }
+
+    /**
+     * Function that adds the switch states stored in the database into an array.
+     */
+    fun addStatesToArray() {
+        val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
+        val cursor = db.readAllData()
+        if(cursor?.count != 0){
+            if (cursor != null) {
+                while(cursor.moveToNext()){
+                    database_states.add(cursor.getInt(4))
+                }
+            }
         }
     }
 
@@ -89,10 +118,16 @@ class CustomAdapter(
         return alarm_names.size
     }
 
+    /**
+     * returns the holder.
+     */
     fun getHolder(): MyViewHolder {
         return holder
     }
 
+    /**
+     * returns the switch states array.
+     */
     fun switch_states(): ArrayList<Boolean> {
         return switch_states
     }

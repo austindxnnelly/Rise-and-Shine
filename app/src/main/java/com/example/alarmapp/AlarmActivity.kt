@@ -12,6 +12,11 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_alarm.*
 
+/**
+ * Alarm activity class, used for the alarm question to disable the alarm.
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
+ */
 class AlarmActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mCurrentPosition: Int = 1
