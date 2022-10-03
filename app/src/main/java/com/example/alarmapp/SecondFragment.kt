@@ -130,7 +130,7 @@ class SecondFragment : Fragment() {
             }
 
             val id = alarm_ids[alarm_ids.size-1]
-            (activity as MainActivity).setAlarm(hour!!, minute!!, id)
+            (activity as MainActivity).setAlarm(hour!!, minute!!, id, name)
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
