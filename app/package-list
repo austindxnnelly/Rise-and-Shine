@@ -14,6 +14,18 @@ $dokka.location:com.example.alarmapp/AlarmDatabase/onCreate/#android.database.sq
 $dokka.location:com.example.alarmapp/AlarmDatabase/onUpgrade/#android.database.sqlite.SQLiteDatabase?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/on-upgrade.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/readAllData/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/read-all-data.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/updateDatabase/#kotlin.String#kotlin.String#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/update-database.html
+$dokka.location:com.example.alarmapp/AlarmService///PointingToDeclaration/app/com.example.alarmapp/-alarm-service/index.html
+$dokka.location:com.example.alarmapp/AlarmService/AlarmService/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/-alarm-service.html
+$dokka.location:com.example.alarmapp/AlarmService/getMediaPlayer/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/get-media-player.html
+$dokka.location:com.example.alarmapp/AlarmService/getVibrator/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/get-vibrator.html
+$dokka.location:com.example.alarmapp/AlarmService/getVibratorManager/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/get-vibrator-manager.html
+$dokka.location:com.example.alarmapp/AlarmService/onBind/#android.content.Intent?/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/on-bind.html
+$dokka.location:com.example.alarmapp/AlarmService/onCreate/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/on-create.html
+$dokka.location:com.example.alarmapp/AlarmService/onDestroy/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/on-destroy.html
+$dokka.location:com.example.alarmapp/AlarmService/onStartCommand/#android.content.Intent?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/on-start-command.html
+$dokka.location:com.example.alarmapp/AlarmService/setMediaPlayer/#android.media.MediaPlayer?/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/set-media-player.html
+$dokka.location:com.example.alarmapp/AlarmService/setVibrator/#android.os.Vibrator?/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/set-vibrator.html
+$dokka.location:com.example.alarmapp/AlarmService/setVibratorManager/#android.os.VibratorManager?/PointingToDeclaration/app/com.example.alarmapp/-alarm-service/set-vibrator-manager.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder///PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/index.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/CustomAdapter.MyViewHolder/#android.view.View/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/-custom-adapter.-my-view-holder.html
 $dokka.location:com.example.alarmapp/CustomAdapter.MyViewHolder/getAlarmName/#/PointingToDeclaration/app/com.example.alarmapp/-custom-adapter/-my-view-holder/get-alarm-name.html
@@ -45,7 +57,7 @@ $dokka.location:com.example.alarmapp/MainActivity/createNotificationChannel/#/Po
 $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-create-options-menu.html
 $dokka.location:com.example.alarmapp/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-options-item-selected.html
 $dokka.location:com.example.alarmapp/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-support-navigate-up.html
-$dokka.location:com.example.alarmapp/MainActivity/setAlarm/#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-main-activity/set-alarm.html
+$dokka.location:com.example.alarmapp/MainActivity/setAlarm/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-main-activity/set-alarm.html
 $dokka.location:com.example.alarmapp/QuestionDatabase///PointingToDeclaration/app/com.example.alarmapp/-question-database/index.html
 $dokka.location:com.example.alarmapp/QuestionDatabase/QuestionDatabase/#kotlin.Int#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-question-database/-question-database.html
 $dokka.location:com.example.alarmapp/QuestionDatabase/getCorrect_ans/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-correct_ans.html
@@ -70,5 +82,6 @@ $dokka.location:com.example.alarmapp/SecondFragment/onViewCreated/#android.view.
 $dokka.location:com.example.alarmapp/myBroadcastReceiver///PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/index.html
 $dokka.location:com.example.alarmapp/myBroadcastReceiver/myBroadcastReceiver/#/PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/my-broadcast-receiver.html
 $dokka.location:com.example.alarmapp/myBroadcastReceiver/onReceive/#android.content.Context#android.content.Intent/PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/on-receive.html
+$dokka.location:com.example.alarmapp/myBroadcastReceiver/startAlarmService/#android.content.Context#android.content.Intent/PointingToDeclaration/app/com.example.alarmapp/my-broadcast-receiver/start-alarm-service.html
 com.example.alarmapp
 
