@@ -114,10 +114,8 @@ class AlarmActivity : AppCompatActivity(), View.OnClickListener {
                     answerView(question.correct_ans, R.drawable.correct_answer)
                     if (mCurrentPosition == mQuestionList!!.size) {
                         btn_submit.text = "Finish"
-                        //Where the alarm is stopped (not sure if 100% correct place)
-                        val intentService = Intent(applicationContext, AlarmService::class.java)
-                        applicationContext.stopService(intentService)
-
+                        //Where the alarm is stopped (not correct place)
+                        stopAlarm()
                     } else {
                         btn_submit.text = "Go to next question"
                     }
@@ -162,5 +160,13 @@ class AlarmActivity : AppCompatActivity(), View.OnClickListener {
                 )
             }
         }
+    }
+
+    /**
+     * Small function to stop the alarm from ringing and vibrating
+     */
+    private fun stopAlarm(){
+        val intentService = Intent(applicationContext, AlarmService::class.java)
+        applicationContext.stopService(intentService)
     }
 }

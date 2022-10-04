@@ -17,7 +17,7 @@ import androidx.core.app.NotificationManagerCompat
  */
 class myBroadcastReceiver : BroadcastReceiver(){
     /**
-     * this is called when an alarm is triggered, and opens AlarmActivity
+     * this is called when an alarm is triggered it calls AlarmService
      * @param context, The Context in which the receiver is running.
      * @param intent, The Intent being received.
      */
@@ -28,7 +28,11 @@ class myBroadcastReceiver : BroadcastReceiver(){
         if(testing) {
             val i = Intent(context, AlarmActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            val pendingIntent = PendingIntent.getActivity(context, 0, i, FLAG_MUTABLE)
+            val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                PendingIntent.getActivity(context, 0, i, FLAG_MUTABLE)
+            }else{
+                PendingIntent.getActivity(context, 0, i, 0)
+            }
 
             val builder = NotificationCompat.Builder(context, "alarmApp")
                 .setSmallIcon(R.mipmap.icon_white_foreground)

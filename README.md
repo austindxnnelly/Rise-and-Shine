@@ -38,6 +38,7 @@ Extra Implementations:
 
 https://github.com/xabaras/RecyclerViewSwipeDecorator
 https://github.com/anugotta/FlipTimerView
+https://github.com/learntodroid/SimpleAlarmClock
 
 Many youtube videos have been very helpful.
 
