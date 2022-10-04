@@ -57,6 +57,12 @@ class myBroadcastReceiver : BroadcastReceiver(){
         }
     }
 
+    /**
+     * Starts the AlarmService class
+     *
+     * @param context required context
+     * @param intent required intent
+     */
     fun startAlarmService(context: Context, intent: Intent){
         val intentService = Intent(context, AlarmService::class.java)
         intentService.putExtra("NAME", intent.getStringExtra("NAME"))

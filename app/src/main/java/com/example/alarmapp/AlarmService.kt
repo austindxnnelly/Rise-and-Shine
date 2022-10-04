@@ -9,7 +9,12 @@ import android.media.MediaPlayer
 import android.os.*
 import androidx.core.app.NotificationCompat
 
-
+/**
+ * Alarm service class which is called by myBroadcastReceiver
+ * It is responsible for alarm sound and vibration as well as creating notification
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
+ */
 class AlarmService : Service() {
     var mediaPlayer: MediaPlayer? = null
     var vibrator: Vibrator? = null

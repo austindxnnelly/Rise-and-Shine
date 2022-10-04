@@ -162,9 +162,6 @@ class AlarmActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * Small function to stop the alarm from ringing and vibrating
-     */
     private fun stopAlarm(){
         val intentService = Intent(applicationContext, AlarmService::class.java)
         applicationContext.stopService(intentService)
