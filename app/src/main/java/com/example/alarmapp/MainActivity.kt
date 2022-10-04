@@ -1,9 +1,6 @@
 package com.example.alarmapp
 
-import android.app.AlarmManager
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.Intent
@@ -39,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var alarmIntent: PendingIntent
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -59,11 +57,12 @@ class MainActivity : AppCompatActivity() {
      */
     fun createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val name : CharSequence = "alarmRingingChannel"
-            val description = "Channel for Alarms"
+            val name : CharSequence = "Alarms"
+            val description = "Channel for alarms to ring"
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel("alarmApp",name,importance)
+            val channel = NotificationChannel("alarmApp", name, importance)
             channel.description = description
+            channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             val notificationManager = getSystemService(
                 NotificationManager::class.java
             )
@@ -78,8 +77,8 @@ class MainActivity : AppCompatActivity() {
      * @param minute the minute when alarm should go off
      * @param id the private id for alarm (used as request code)
      */
-    fun setAlarm(hour : Int, minute: Int, id: Int){
-        var daily = false
+    fun setAlarm(hour : Int, minute: Int, id: Int, name: String){
+        val daily = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
@@ -88,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             }
             alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, myBroadcastReceiver::class.java)
+            intent.putExtra("NAME", name)
 
             val rightNow = Calendar.getInstance()
             // if alarm is set in the past add a day onto it so it rings same time next day
@@ -124,9 +124,13 @@ class MainActivity : AppCompatActivity() {
         alarmMgr = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, myBroadcastReceiver::class.java)
 
-        alarmIntent = PendingIntent.getBroadcast(this, id, intent, FLAG_MUTABLE)
-        alarmMgr.cancel(alarmIntent)
+        alarmIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getBroadcast(this, id, intent, FLAG_MUTABLE)
+        }else{
+            PendingIntent.getBroadcast(this, id, intent, 0)
+        }
 
+        alarmMgr.cancel(alarmIntent)
         Toast.makeText(this, "Alarm $id deleted", Toast.LENGTH_LONG).show()
     }
 

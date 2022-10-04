@@ -90,8 +90,8 @@ class CustomAdapter(
             }
             val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
             db.updateDatabase(alarm_ids.get(position).toString(), alarm_names.get(position), alarm_hours.get(position), alarm_minutes.get(position), s)
-            database_states.clear()
             addStatesToArray()
+            database_states.clear()
         }
     }
 
