@@ -4,10 +4,12 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.*
 import androidx.core.app.NotificationCompat
+import java.lang.reflect.Executable
 
 /**
  * Alarm service class which is called by myBroadcastReceiver
@@ -57,7 +59,7 @@ class AlarmService : Service() {
 
         mediaPlayer!!.start()
         //how long to wait, how long to vibrate for, how long to wait for
-        val pattern = longArrayOf(0, 200, 500)
+        val pattern = longArrayOf(0, 500, 200)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val effect = VibrationEffect.createWaveform(pattern,0)
             vibrator!!.vibrate(effect)
@@ -66,6 +68,7 @@ class AlarmService : Service() {
             vibrator!!.vibrate(pattern, 0)
         }
         startForeground(1, notification)
+        flipSwitch(intent)
         return START_STICKY
     }
 
@@ -77,6 +80,21 @@ class AlarmService : Service() {
 
     override fun onBind(p0: Intent?): IBinder? {
         return null
+    }
+
+    fun flipSwitch(intent: Intent?){
+        val name = intent!!.getStringExtra("NAME")
+        val hour = intent!!.getIntExtra("HOUR", -1)
+        val minute = intent!!.getIntExtra("MINUTE", -1)
+        val id = intent!!.getStringExtra("ID")
+        val db = AlarmDatabase(this, "AlarmDatabase", null, 1)
+
+        if (id != null && name != null) {
+            db.updateDatabase(id, name, hour, minute, 0)
+        }else{
+            print("ID not valid - id: $id")
+//            throw Exception("ID not valid - id: $id - name valid? $name")
+        }
     }
 
 }

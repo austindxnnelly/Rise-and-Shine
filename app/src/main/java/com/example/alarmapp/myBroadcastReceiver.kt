@@ -66,6 +66,9 @@ class myBroadcastReceiver : BroadcastReceiver(){
     fun startAlarmService(context: Context, intent: Intent){
         val intentService = Intent(context, AlarmService::class.java)
         intentService.putExtra("NAME", intent.getStringExtra("NAME"))
+        intentService.putExtra("HOUR", intent.getIntExtra("HOUR", -1))
+        intentService.putExtra("MINUTE", intent.getIntExtra("MINUTE", -1))
+        intentService.putExtra("ID", intent.getStringExtra("ID"))
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intentService)

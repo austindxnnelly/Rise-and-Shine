@@ -17,7 +17,6 @@ import android.widget.Toast
 import com.example.alarmapp.databinding.ActivityMainBinding
 import android.icu.util.Calendar
 import android.icu.util.Calendar.*
-import androidx.annotation.RequiresApi
 
 /**
  * Main class, used for our notification channel, allowing
@@ -77,7 +76,7 @@ class MainActivity : AppCompatActivity() {
      * @param minute the minute when alarm should go off
      * @param id the private id for alarm (used as request code)
      */
-    fun setAlarm(hour : Int, minute: Int, id: Int, name: String){
+    fun setAlarm(hour : Int, minute: Int, id: Int, name: String, msg: Boolean = true){
         val daily = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val calendar = Calendar.getInstance().apply {
@@ -87,7 +86,12 @@ class MainActivity : AppCompatActivity() {
             }
             alarmMgr = this.getSystemService(ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, myBroadcastReceiver::class.java)
+
             intent.putExtra("NAME", name)
+            intent.putExtra("HOUR", hour)
+            intent.putExtra("MINUTE", minute)
+            val idString = id.toString()
+            intent.putExtra("ID", idString)
 
             val rightNow = Calendar.getInstance()
             // if alarm is set in the past add a day onto it so it rings same time next day
@@ -109,8 +113,11 @@ class MainActivity : AppCompatActivity() {
                     alarmIntent
                 )
             }
-            Toast.makeText(this, "Alarm $id set successfully"
-                , Toast.LENGTH_SHORT).show()
+            if(msg) {
+                Toast.makeText(
+                    this, "Alarm $id set successfully", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -120,7 +127,7 @@ class MainActivity : AppCompatActivity() {
      * @param id the private id for alarm (used as request code)
      *      -- NEEDS to be the same as was used to set alarm
      */
-    fun cancelAlarm(id : Int){
+    fun cancelAlarm(id: Int, msg: Boolean = true){
         alarmMgr = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, myBroadcastReceiver::class.java)
 
@@ -131,9 +138,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         alarmMgr.cancel(alarmIntent)
-        Toast.makeText(this, "Alarm $id deleted", Toast.LENGTH_LONG).show()
+        if(msg) {
+            Toast.makeText(this, "Alarm $id deleted", Toast.LENGTH_LONG).show()
+        }
     }
 
+    /**
+     * Function to change name of alarm
+     * displays a short message
+     *
+     * @param id the unique id used to set original alarm
+     */
+    fun changeAlarm(id : Int){
+        cancelAlarm(id)
+
+//        Toast.makeText(this, "Alarm $id deleted", Toast.LENGTH_LONG).show()
+
+
+    }
     /**
      * Initialize the contents of the Activity's standard options menu.
      * @param menu, The options menu in which the items are placed

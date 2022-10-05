@@ -56,6 +56,9 @@ class EditDialog(
                 s = 1
             }
             db.updateDatabase(id, binding.EditName.text.toString(), hour, minute, s)
+            val idInt = Integer.parseInt(id)
+            (activity as MainActivity).cancelAlarm(idInt)
+            (activity as MainActivity).setAlarm(hour, minute, idInt, name)
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             dismiss()

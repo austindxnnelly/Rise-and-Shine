@@ -3,6 +3,7 @@ package com.example.alarmapp
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
@@ -63,6 +64,8 @@ class CustomAdapter(
         val isSystem24Hour = DateFormat.is24HourFormat(context)
         val hour = alarm_hours[position]
         val minute = alarm_minutes[position]
+        val id = alarm_ids[position]
+        val name = alarm_names[position]
         val minuteString = if(minute < 10) "0$minute" else "$minute"
 
         if(!isSystem24Hour){
@@ -91,6 +94,10 @@ class CustomAdapter(
             val db = AlarmDatabase(context, "AlarmDatabase", null, 1)
             db.updateDatabase(alarm_ids.get(position).toString(), alarm_names.get(position), alarm_hours.get(position), alarm_minutes.get(position), s)
             addStatesToArray()
+
+//            MainActivity().cancelAlarm(id)
+//            MainActivity().setAlarm(hour, minute, id, name)
+
             database_states.clear()
         }
     }
