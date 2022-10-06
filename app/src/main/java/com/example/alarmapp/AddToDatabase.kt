@@ -23,7 +23,18 @@ object AddToDatabase {
             4
         )
 
+        var question2 = QuestionDatabase(
+            1,
+            "What is 9 times 9?",
+            "72",
+            "81",
+            "90",
+            "99",
+            2
+        )
+
         que.add(question1)
+        que.add(question2)
         return que
     }
 }
