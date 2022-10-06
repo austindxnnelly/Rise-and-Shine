@@ -22,6 +22,7 @@ class AlarmActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionList: ArrayList<QuestionDatabase>? = null
     private var mSelectedOptionPosition: Int = 0
+    private var correctAmt: Int = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,8 +111,10 @@ class AlarmActivity : AppCompatActivity(), View.OnClickListener {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correct_ans != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.incorrect_answer)
+                    } else {
+                        answerView(question.correct_ans, R.drawable.correct_answer)
+                        correctAmt += 1;
                     }
-                    answerView(question.correct_ans, R.drawable.correct_answer)
                     if (mCurrentPosition == mQuestionList!!.size) {
                         btn_submit.text = "Finish"
                         //Where the alarm is stopped (not correct place)
@@ -163,7 +166,12 @@ class AlarmActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun stopAlarm(){
-        val intentService = Intent(applicationContext, AlarmService::class.java)
-        applicationContext.stopService(intentService)
+        if (correctAmt == 2) {
+            val intentService = Intent(applicationContext, AlarmService::class.java)
+            applicationContext.stopService(intentService)
+        } else {
+            val intent = Intent(this,AlarmActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
