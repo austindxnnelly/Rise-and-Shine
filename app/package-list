@@ -5,7 +5,12 @@ $dokka.location:com.example.alarmapp/AddToDatabase///PointingToDeclaration/app/
 $dokka.location:com.example.alarmapp/AddToDatabase/getQuestion/#/PointingToDeclaration/app/com.example.alarmapp/-add-to-database/get-question.html
 $dokka.location:com.example.alarmapp/AlarmActivity///PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/index.html
 $dokka.location:com.example.alarmapp/AlarmActivity/AlarmActivity/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/-alarm-activity.html
-$dokka.location:com.example.alarmapp/AlarmActivity/onClick/#android.view.View?/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity/on-click.html
+$dokka.location:com.example.alarmapp/AlarmActivityMath///PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-math/index.html
+$dokka.location:com.example.alarmapp/AlarmActivityMath/AlarmActivityMath/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-math/-alarm-activity-math.html
+$dokka.location:com.example.alarmapp/AlarmActivityMath/onClick/#android.view.View?/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-math/on-click.html
+$dokka.location:com.example.alarmapp/AlarmActivityMemory///PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-memory/index.html
+$dokka.location:com.example.alarmapp/AlarmActivityMemory/AlarmActivityMemory/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-memory/-alarm-activity-memory.html
+$dokka.location:com.example.alarmapp/AlarmActivityMemory/onClick/#android.view.View?/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-memory/on-click.html
 $dokka.location:com.example.alarmapp/AlarmDatabase///PointingToDeclaration/app/com.example.alarmapp/-alarm-database/index.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/AlarmDatabase/#android.content.Context?#kotlin.String?#android.database.sqlite.SQLiteDatabase.CursorFactory?#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/-alarm-database.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/addAlarm/#kotlin.String?#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/add-alarm.html
