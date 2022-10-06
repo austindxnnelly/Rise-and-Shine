@@ -20,6 +20,16 @@
         android:theme="@style/Theme.Alarmapp"
         tools:targetApi="31">
         <activity
+            android:name=".AlarmActivityMemory"
+            android:parentActivityName=".AlarmActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <activity
+            android:name=".AlarmActivityMath"
+            android:parentActivityName=".AlarmActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <activity
             android:name=".AlarmActivity"
             android:parentActivityName=".MainActivity"
             android:exported="false"
