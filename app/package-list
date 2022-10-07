@@ -10,7 +10,6 @@ $dokka.location:com.example.alarmapp/AlarmActivityMath/AlarmActivityMath/#/Point
 $dokka.location:com.example.alarmapp/AlarmActivityMath/onClick/#android.view.View?/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-math/on-click.html
 $dokka.location:com.example.alarmapp/AlarmActivityMemory///PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-memory/index.html
 $dokka.location:com.example.alarmapp/AlarmActivityMemory/AlarmActivityMemory/#/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-memory/-alarm-activity-memory.html
-$dokka.location:com.example.alarmapp/AlarmActivityMemory/onClick/#android.view.View?/PointingToDeclaration/app/com.example.alarmapp/-alarm-activity-memory/on-click.html
 $dokka.location:com.example.alarmapp/AlarmDatabase///PointingToDeclaration/app/com.example.alarmapp/-alarm-database/index.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/AlarmDatabase/#android.content.Context?#kotlin.String?#android.database.sqlite.SQLiteDatabase.CursorFactory?#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/-alarm-database.html
 $dokka.location:com.example.alarmapp/AlarmDatabase/addAlarm/#kotlin.String?#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-alarm-database/add-alarm.html
@@ -63,6 +62,13 @@ $dokka.location:com.example.alarmapp/MainActivity/onCreateOptionsMenu/#android.v
 $dokka.location:com.example.alarmapp/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-options-item-selected.html
 $dokka.location:com.example.alarmapp/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.alarmapp/-main-activity/on-support-navigate-up.html
 $dokka.location:com.example.alarmapp/MainActivity/setAlarm/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.String/PointingToDeclaration/app/com.example.alarmapp/-main-activity/set-alarm.html
+$dokka.location:com.example.alarmapp/MemoryCard///PointingToDeclaration/app/com.example.alarmapp/-memory-card/index.html
+$dokka.location:com.example.alarmapp/MemoryCard/MemoryCard/#kotlin.Int#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/app/com.example.alarmapp/-memory-card/-memory-card.html
+$dokka.location:com.example.alarmapp/MemoryCard/getIdentifier/#/PointingToDeclaration/app/com.example.alarmapp/-memory-card/get-identifier.html
+$dokka.location:com.example.alarmapp/MemoryCard/isFaceUp/#/PointingToDeclaration/app/com.example.alarmapp/-memory-card/is-face-up.html
+$dokka.location:com.example.alarmapp/MemoryCard/isMatched/#/PointingToDeclaration/app/com.example.alarmapp/-memory-card/is-matched.html
+$dokka.location:com.example.alarmapp/MemoryCard/setFaceUp/#kotlin.Boolean/PointingToDeclaration/app/com.example.alarmapp/-memory-card/set-face-up.html
+$dokka.location:com.example.alarmapp/MemoryCard/setMatched/#kotlin.Boolean/PointingToDeclaration/app/com.example.alarmapp/-memory-card/set-matched.html
 $dokka.location:com.example.alarmapp/QuestionDatabase///PointingToDeclaration/app/com.example.alarmapp/-question-database/index.html
 $dokka.location:com.example.alarmapp/QuestionDatabase/QuestionDatabase/#kotlin.Int#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.Int/PointingToDeclaration/app/com.example.alarmapp/-question-database/-question-database.html
 $dokka.location:com.example.alarmapp/QuestionDatabase/getCorrect_ans/#/PointingToDeclaration/app/com.example.alarmapp/-question-database/get-correct_ans.html
