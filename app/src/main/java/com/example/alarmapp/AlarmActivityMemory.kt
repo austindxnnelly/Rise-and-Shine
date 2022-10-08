@@ -9,6 +9,11 @@ import kotlinx.android.synthetic.main.activity_alarm_memory.*
 
 private const val TAG = "AlarmActivityMemory"
 
+/**
+ * Alarm activity class, used for the alarm memory game to disable the alarm.
+ *
+ * @author Shay Stevens, Dougal Colquhoun, Liam Iggo, Austin Donnelly
+ */
 class AlarmActivityMemory : AppCompatActivity() {
 
     private lateinit var buttons: List<ImageButton>
@@ -40,6 +45,9 @@ class AlarmActivityMemory : AppCompatActivity() {
         }
     }
 
+    /**
+     * This function is called to update the views.
+     */
     private fun updateViews() {
         cards.forEachIndexed { index, card ->
             val button = buttons[index]
@@ -50,6 +58,9 @@ class AlarmActivityMemory : AppCompatActivity() {
         }
     }
 
+    /**
+     * This function is called to update the models.
+     */
     private fun updateModels(position: Int) {
         val card = cards[position]
         if (card.isFaceUp) {
@@ -67,6 +78,9 @@ class AlarmActivityMemory : AppCompatActivity() {
         card.isFaceUp = !card.isFaceUp
     }
 
+    /**
+     * This function is called to restore the cards.
+     */
     private fun restoreCards() {
         for (card in cards) {
             if (!card.isMatched) {
@@ -75,6 +89,11 @@ class AlarmActivityMemory : AppCompatActivity() {
         }
     }
 
+    /**
+     * This function is used to check for a match between the selected pair.
+     * @param position1 the first card position.
+     * @param position2 the second card position.
+     */
     private fun checkForMatch(position1: Int, position2: Int) {
         if (cards[position1].identifier == cards[position2].identifier) {
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
@@ -87,6 +106,9 @@ class AlarmActivityMemory : AppCompatActivity() {
         }
     }
 
+    /**
+     * This function is called to stop the alarm.
+     */
     private fun stopAlarm() {
         val intentService = Intent(applicationContext, AlarmService::class.java)
         applicationContext.stopService(intentService)

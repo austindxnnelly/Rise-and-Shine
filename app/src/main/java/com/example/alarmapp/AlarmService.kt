@@ -36,6 +36,12 @@ class AlarmService : Service() {
         }
     }
 
+    /**
+     * This function is called to start the notifications.
+     * @param intent the intent of the activity.
+     * @param flags The flags.
+     * @param startId the id of the notification.
+     */
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val notificationIntent = Intent(this, AlarmActivity::class.java)
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -69,12 +75,18 @@ class AlarmService : Service() {
         return START_STICKY
     }
 
+    /**
+     * This function is used to destroy the sound and vibrations.
+     */
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer!!.stop()
         vibrator!!.cancel()
     }
 
+    /**
+     * This function is not used.
+     */
     override fun onBind(p0: Intent?): IBinder? {
         return null
     }

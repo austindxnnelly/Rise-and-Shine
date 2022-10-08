@@ -38,6 +38,9 @@ class AlarmActivityMath : AppCompatActivity(), View.OnClickListener {
         btn_submit.setOnClickListener(this)
     }
 
+    /**
+     * This function is used to set the math question.
+     */
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
 
@@ -57,6 +60,9 @@ class AlarmActivityMath : AppCompatActivity(), View.OnClickListener {
         tv_option_four.text = question.option_four
     }
 
+    /**
+     * This function is used for displaying the default view.
+     */
     private fun defaultOptionsView() {
 
         val options = ArrayList<TextView>()
@@ -76,6 +82,9 @@ class AlarmActivityMath : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    /**
+     * This is called when an option is clicked.
+     */
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.tv_option_one -> {
@@ -129,6 +138,11 @@ class AlarmActivityMath : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    /**
+     * This function is called when an option is selected.
+     * @param tv the textView of the option selected.
+     * @param selectedOptionNum the number of the option selected.
+     */
     private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
         defaultOptionsView()
         mSelectedOptionPosition = selectedOptionNum
@@ -140,6 +154,11 @@ class AlarmActivityMath : AppCompatActivity(), View.OnClickListener {
         )
     }
 
+    /**
+     * This function changes the view based on the answer selected and the correct answer.
+     * @param answer the answer chosen.
+     * @param drawableView view correct (green) or wrong (red).
+     */
     private fun answerView(answer: Int, drawableView: Int) {
         when (answer) {
             1 -> {
@@ -165,6 +184,9 @@ class AlarmActivityMath : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    /**
+     * This function is called to stop the alarm.
+     */
     private fun stopAlarm(){
         if (correctAmt == 2) {
             val intentService = Intent(applicationContext, AlarmService::class.java)
