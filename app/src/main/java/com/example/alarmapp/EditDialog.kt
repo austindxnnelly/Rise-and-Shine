@@ -1,9 +1,11 @@
 package com.example.alarmapp
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.asp.fliptimerviewlibrary.CountDownClock
@@ -41,6 +43,20 @@ class EditDialog(
         savedInstanceState: Bundle?
     ): View {
         _binding = EditDialogBinding.inflate(inflater, container, false)
+        when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                val backgroundcolor = context?.let { ContextCompat.getColor(it, R.color.background) }
+                val textcolor = context?.let { ContextCompat.getColor(it, R.color.night_name) }
+                if (backgroundcolor != null) {
+                    binding.setTime.setBackgroundColor(backgroundcolor)
+                }
+                if (textcolor != null) {
+                    binding.setTime.setHintTextColor(textcolor)
+                    binding.EditTime.setTextColor(textcolor)
+                    binding.EditName.setTextColor(textcolor)
+                }
+            }
+        }
         if(name == ""){
             binding.EditName.hint = "Alarm Name"
         }

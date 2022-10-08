@@ -3,6 +3,7 @@ package com.example.alarmapp
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.content.res.Configuration
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import android.view.ViewParent
 import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.my_row.view.*
 import kotlin.properties.Delegates
 
 /**
@@ -55,6 +58,18 @@ class CustomAdapter(
      */
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                val backgroundcolor = context?.let { ContextCompat.getColor(it, R.color.background) }
+                val textcolor = context?.let { ContextCompat.getColor(it, R.color.night_name) }
+                if (backgroundcolor != null) {
+                    holder.itemView.row.setBackgroundColor(backgroundcolor)
+                }
+                if (textcolor != null) {
+                    holder.itemView.alarm_time.setTextColor(textcolor)
+                }
+            }
+        }
         addStatesToArray()
         val state = database_states[position] == 1
         holder.switch.isChecked = state

@@ -1,5 +1,6 @@
 package com.example.alarmapp
 
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
@@ -7,10 +8,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.alarmapp.databinding.FragmentSecondBinding
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import kotlinx.android.synthetic.main.my_row.view.*
 import java.util.*
 
 /**
@@ -98,7 +101,18 @@ class SecondFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                val backgroundcolor = context?.let { ContextCompat.getColor(it, R.color.background) }
+                val textcolor = context?.let { ContextCompat.getColor(it, R.color.night_name) }
+                if (backgroundcolor != null) {
+                    binding.setTime.setBackgroundColor(backgroundcolor)
+                }
+                if (textcolor != null) {
+                    binding.setTime.setHintTextColor(textcolor)
+                }
+            }
+        }
         binding.buttonSecond.setOnClickListener {
             val time = binding.setTime.hint.toString()
 
